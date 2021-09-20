@@ -1,0 +1,65 @@
+$primary-color: #3e9920;
+$white-color: white;
+
+$primary-font: UberMoveText-Medium, Helvetica, sans-serif;
+
+.login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    padding: 90px;
+    height: 32px;
+    width: auto;
+    max-width: inherit;
+  }
+  div {
+    width: 70%;
+  }
+  h5 {
+    font-size: 30px;
+    font-family: $primary-font;
+  }
+  input {
+    display: block;
+    width: 100%;
+    padding-left: 12px;
+  }
+  button {
+    width: 102%;
+    background-color: $primary-color;
+    color: $white-color;
+    border: 0px;
+  }
+
+  .loginTab {
+    > * {
+      margin: 10px;
+      height: 40px;
+    }
+    p span {
+      color: $primary-color;
+    }
+  }
+
+  .loginTab {
+    // width: 28%;
+    width: 46%;
+  }
+  footer {
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    bottom: 0px;
+    color: $white-color;
+    font: 5px $primary-font;
+    background-color: #262626;
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      padding: 0 50px;
+    }
+  }
+}
