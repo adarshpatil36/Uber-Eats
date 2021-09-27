@@ -1,39 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { ACTION_TYPE } from "../actions/ActionTypes";
+import { CustomerSignup } from "./CustomerSignup";
+import axios from "axios";
 
 export const Login = ({ activeTab, loginUser, changeActiveTab }) => {
+  const [uname, setUname] = useState("");
+  // const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChange = (e) => {
+    console.log(e);
+    switch (e.target.id) {
+      case "uname":
+        setUname(e.target.value);
+        break;
+      case "password":
+        setPassword(e.target.value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const login = () => {
+    const data = { uname, password };
+    console.log("Post Data", data);
+    axios.post("http://localhost:8080/login", data).then((res) => {
+      if (res.data === "Okay") {
+        console.log("Data posted Successful ");
+      } else {
+        console.log("Data post failed ");
+      }
+    });
+  };
+
   const signUpTab = () => {
     changeActiveTab(1);
   };
   const loginTab = () => {
     changeActiveTab(0);
   };
+
   const getLoginTab = () => {
     return (
       <div class="loginTab">
         <h5>Welcome Back {loginUser} </h5>
-        <span>Sign in with your email address or mobile number.</span>
-        <input placeholder="Email or Mobile Number"></input>
-        <button>Next</button>
+        <span>Sign in with your email address or user name.</span>
+        <input
+          id="uname"
+          placeholder="User Name"
+          onChange={handleChange}
+        ></input>
+        <input
+          id="password"
+          placeholder="Password"
+          onChange={handleChange}
+        ></input>
+        <button onClick={login}>Next</button>
         <p>
           New to Uber?
           <span onClick={() => signUpTab()}> Create an account</span>
-        </p>
-      </div>
-    );
-  };
-  const getSignupTab = () => {
-    return (
-      <div class="loginTab">
-        <h5>Let's get started {loginUser} </h5>
-        <span>Enter your phone number (required)</span>
-        <input placeholder="Enter Mobile Number"></input>
-        <button>Next</button>
-        <p>
-          Already use Uber?
-          <span onClick={() => loginTab()}> Sign in</span>
         </p>
       </div>
     );
@@ -43,7 +71,7 @@ export const Login = ({ activeTab, loginUser, changeActiveTab }) => {
       case 0:
         return getLoginTab();
       case 1:
-        return getSignupTab();
+        return <CustomerSignup loginTab={loginTab} />;
       default:
         getLoginTab();
     }
