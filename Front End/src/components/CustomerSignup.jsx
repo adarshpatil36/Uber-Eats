@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
+import Logo from "./Logo";
 
 export const CustomerSignup = ({ loginTab }) => {
   const [fname, setFname] = useState("");
@@ -52,10 +53,7 @@ export const CustomerSignup = ({ loginTab }) => {
 
   return (
     <div className="login">
-      <img
-        src="https://d1a3f4spazzrp4.cloudfront.net/arch-frontend/1.1.1/d1a3f4spazzrp4.cloudfront.net/eats/eats-logo-1a01872c77.svg"
-        alt=""
-      ></img>
+      <Logo />
       <div className="loginTab">
         <h5>Let's get started </h5>
         <input

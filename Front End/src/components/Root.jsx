@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { ACTION_TYPE } from "../actions/ActionTypes";
 import { CustomerSignup } from "./CustomerSignup";
-import axios from "axios";
 import Login from "./Login";
+import { Dashboard } from "./Dashboard";
 
 export const Root = ({ activeTab, loginUser, changeActiveTab }) => {
   const loginTab = () => {
@@ -16,12 +16,14 @@ export const Root = ({ activeTab, loginUser, changeActiveTab }) => {
   };
   const getActiveTabContent = () => {
     switch (activeTab) {
-      case 0:
+      case 3:
         return getLoginTab();
       case 1:
         return <CustomerSignup loginTab={loginTab} />;
+      case 0:
+        return <Dashboard />;
       default:
-        getLoginTab();
+        return <></>;
     }
   };
   return <>{getActiveTabContent()}</>;

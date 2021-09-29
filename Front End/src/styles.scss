@@ -3,6 +3,11 @@ $white-color: white;
 
 $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
 
+#root {
+  margin: auto;
+  width: 80%;
+}
+
 .login {
   display: flex;
   justify-content: center;
@@ -61,5 +66,50 @@ $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
     h1 {
       padding: 0 50px;
     }
+  }
+}
+
+.topFilter {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 8%;
+  }
+}
+
+.NavBar {
+  input {
+    height: 30px;
+    border-radius: 20px;
+    padding-left: 12px;
+    margin: 30px;
+  }
+  img {
+    margin-left: 30px;
+  }
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+.displayResult {
+  p {
+    font-weight: 700;
+    font-size: larger;
+  }
+  img {
+    padding: 14px;
+  }
+}
+.offerCard {
+  display: flex;
+  height: 135px;
+  justify-content: space-around;
+  margin: 40px 0px;
+
+  img {
+    width: 25%;
+    border-radius: 14px;
   }
 }

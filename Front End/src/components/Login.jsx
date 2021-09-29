@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
 import { ACTION_TYPE } from "../actions/ActionTypes";
+import Logo from "./Logo";
 
 export const Login = ({ changeActiveTab, loginUser }) => {
   const [uname, setUname] = useState("");
@@ -32,6 +33,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
     axios.post("http://localhost:8080/login", data).then((res) => {
       if (res.data === "Okay") {
         console.log("Data posted Successful ");
+        changeActiveTab(2);
       } else {
         console.log("Data post failed ");
       }
@@ -40,10 +42,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
 
   return (
     <div className="login">
-      <img
-        src="https://d1a3f4spazzrp4.cloudfront.net/arch-frontend/1.1.1/d1a3f4spazzrp4.cloudfront.net/eats/eats-logo-1a01872c77.svg"
-        alt=""
-      ></img>
+      <Logo />
 
       <div className="loginTab">
         <h5>Welcome Back {loginUser} </h5>
