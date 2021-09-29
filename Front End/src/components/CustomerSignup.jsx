@@ -51,43 +51,49 @@ export const CustomerSignup = ({ loginTab }) => {
   };
 
   return (
-    <div class="loginTab">
-      <h5>Let's get started </h5>
-      <input
-        id="fname"
-        placeholder="First Name"
-        value={fname}
-        onChange={handleChange}
-      ></input>
-      <input
-        id="lname"
-        placeholder="Last Name"
-        value={lname}
-        onChange={handleChange}
-      ></input>
-      <input
-        id="uname"
-        placeholder="User Name"
-        value={uname}
-        onChange={handleChange}
-      ></input>
-      <input
-        id="email"
-        placeholder="Email ID"
-        value={email}
-        onChange={handleChange}
-      ></input>
-      <input
-        id="password"
-        placeholder="Password"
-        value={password}
-        onChange={handleChange}
-      ></input>
-      <button onClick={signUp}>Next</button>
-      <p>
-        Already use Uber?
-        <span onClick={() => loginTab()}> Sign in</span>
-      </p>
+    <div className="login">
+      <img
+        src="https://d1a3f4spazzrp4.cloudfront.net/arch-frontend/1.1.1/d1a3f4spazzrp4.cloudfront.net/eats/eats-logo-1a01872c77.svg"
+        alt=""
+      ></img>
+      <div className="loginTab">
+        <h5>Let's get started </h5>
+        <input
+          id="fname"
+          placeholder="First Name"
+          value={fname}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="lname"
+          placeholder="Last Name"
+          value={lname}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="uname"
+          placeholder="User Name"
+          value={uname}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="email"
+          placeholder="Email ID"
+          value={email}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="password"
+          placeholder="Password"
+          value={password}
+          onChange={handleChange}
+        ></input>
+        <button onClick={signUp}>Next</button>
+        <p>
+          Already use Uber?
+          <span onClick={() => loginTab()}> Sign in</span>
+        </p>
+      </div>
     </div>
   );
 };

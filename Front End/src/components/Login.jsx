@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { ACTION_TYPE } from "../actions/ActionTypes";
-import { CustomerSignup } from "./CustomerSignup";
 import axios from "axios";
+import { ACTION_TYPE } from "../actions/ActionTypes";
 
-export const Login = ({ activeTab, loginUser, changeActiveTab }) => {
+export const Login = ({ changeActiveTab, loginUser }) => {
   const [uname, setUname] = useState("");
-  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const signUpTab = () => {
+    changeActiveTab(1);
+  };
 
   const handleChange = (e) => {
     console.log(e);
@@ -36,16 +38,14 @@ export const Login = ({ activeTab, loginUser, changeActiveTab }) => {
     });
   };
 
-  const signUpTab = () => {
-    changeActiveTab(1);
-  };
-  const loginTab = () => {
-    changeActiveTab(0);
-  };
+  return (
+    <div className="login">
+      <img
+        src="https://d1a3f4spazzrp4.cloudfront.net/arch-frontend/1.1.1/d1a3f4spazzrp4.cloudfront.net/eats/eats-logo-1a01872c77.svg"
+        alt=""
+      ></img>
 
-  const getLoginTab = () => {
-    return (
-      <div class="loginTab">
+      <div className="loginTab">
         <h5>Welcome Back {loginUser} </h5>
         <span>Sign in with your email address or user name.</span>
         <input
@@ -64,26 +64,6 @@ export const Login = ({ activeTab, loginUser, changeActiveTab }) => {
           <span onClick={() => signUpTab()}> Create an account</span>
         </p>
       </div>
-    );
-  };
-  const getActiveTabContent = () => {
-    switch (activeTab) {
-      case 0:
-        return getLoginTab();
-      case 1:
-        return <CustomerSignup loginTab={loginTab} />;
-      default:
-        getLoginTab();
-    }
-  };
-  return (
-    <div class="login">
-      <img
-        src="https://d1a3f4spazzrp4.cloudfront.net/arch-frontend/1.1.1/d1a3f4spazzrp4.cloudfront.net/eats/eats-logo-1a01872c77.svg"
-        alt=""
-      ></img>
-
-      {getActiveTabContent()}
       <footer>
         <h1>© 2020 Uber Technologies, Inc.</h1>
         <h1>Privacy Policy | Terms of Use</h1>
@@ -96,10 +76,11 @@ Login.propTypes = {
   props: PropTypes,
 };
 
-const mapStateToProps = (state) => ({
-  activeTab: state.loginReducer.activeTab,
-  loginUser: state.loginReducer.loginUser,
-});
+const mapStateToProps = (state) => {
+  return {
+    loginUser: state.loginReducer.loginUser,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
