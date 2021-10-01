@@ -1,4 +1,5 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const mysql = require("mysql");
 
 var app = express();
@@ -12,23 +13,20 @@ app.set("view engine", "ejs");
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 //use express session to maintain session data
-app.use(
-  session({
-    secret: "cmpe273_kafka_passport_mongo",
-    resave: false, // Forces the session to be saved back to the session store, even if the session was never modified during the request
-    saveUninitialized: false, // Force to save uninitialized session to db. A session is uninitialized when it is new but not modified.
-    duration: 60 * 60 * 1000, // Overall duration of Session : 30 minutes : 1800 seconds
-    activeDuration: 5 * 60 * 1000,
-  })
-);
+// app.use(
+//   session({
+//     secret: "cmpe273_kafka_passport_mongo",
+//     resave: false, // Forces the session to be saved back to the session store, even if the session was never modified during the request
+//     saveUninitialized: false, // Force to save uninitialized session to db. A session is uninitialized when it is new but not modified.
+//     duration: 60 * 60 * 1000, // Overall duration of Session : 30 minutes : 1800 seconds
+//     activeDuration: 5 * 60 * 1000,
+//   })
+// );
 
-// app.use(bodyParser.urlencoded({
-//     extended: true
-//   }));
 app.use(bodyParser.json());
 
 //Allow Access Control
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
@@ -51,7 +49,7 @@ var con = mysql.createConnection({
   database: "Uber_Eats",
 });
 
-con.connect(function (err) {
+con.connect((err) => {
   if (err) {
     console.log("Database connection failed " + err.stack);
     return;
@@ -79,7 +77,7 @@ con.connect(function (err) {
 // connection.end();
 
 app.get("/", (request, reponse) => {
-  reponse.send("Hello World...!!!");
+  reponse.send("Hello World ...!!!");
 });
 
 app.post("/adduser", function (request, reponse) {
@@ -98,25 +96,65 @@ app.post("/adduser", function (request, reponse) {
   );
 });
 
-app.post("/login", function (request, reponse) {
-  console.log("Data received", request.body);
-  const { uname, password } = request.body;
-  const res = con.query(
-    `select * from customer where (user = '${uname}' and password='${password}') or (email = '${uname}' and password='${password}');
-  `,
-    (err, rows) => {
-      if (err) throw err;
-      console.log("Data received from Db:");
-      console.log(rows);
+app.post("/login", (req, res) => {
+  const user = {
+    username: req.body.uname,
+  };
 
-      if (rows && rows.length) {
-        reponse.send(rows);
-      } else {
-        reponse.send("Login Failed");
-      }
-    }
-  );
+  jwt.sign({ user }, "secretKey", { expiresIn: "5m" }, (err, token) => {
+    res.json({
+      token,
+    });
+  });
+
+  // console.log("Data received", request.body);
+  // const { uname, password } = request.body;
+  // con.query(
+  //   `select * from customer where (user = '${uname}' and password='${password}') or (email = '${uname}' and password='${password}');
+  // `,
+  //   (err, rows) => {
+  //     if (err) throw err;
+  //     console.log("Data received from Db:");
+  //     console.log(rows);
+
+  //     if (rows && rows.length) {
+  //       reponse.send(rows);
+  //     } else {
+  //       reponse.send("Login Failed");
+  //     }
+  //   }
+  // );
 });
+
+app.post("/posts", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretKey", (err, authData) => {
+    if (err) {
+      res.sendStatus(403);
+    } else {
+      res.json({
+        message: "Post Created",
+        authData,
+      });
+    }
+  });
+});
+
+/*** Verify Token middleware
+ *
+ */
+function verifyToken(req, res, next) {
+  const bearerHeader = req.headers["authorization"];
+  if (typeof bearerHeader !== "undefined") {
+    const bearer = bearerHeader.split(" ");
+    // Get token from array
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  } else {
+    // Forbidden
+    res.sendStatus(403);
+  }
+}
 
 app.listen(8080, () => {
   console.log("Started application on port %d", 8080);
