@@ -82,48 +82,47 @@ app.get("/", (request, reponse) => {
 
 app.post("/adduser", function (request, reponse) {
   console.log("Data received", request.body);
-  const { fname, lname, uname, email, password } = request.body;
+  const { fname, lname, uname, email, password, mob, address, isRestaurant } =
+    request.body;
   con.query(
     `INSERT into customer (firstName,lastName,user,
-      email, password) values ( '${fname}','${lname}','${uname}','${email}',' ${password}');
+      email, password, mob, address, isRestaurant) values ( '${fname}','${lname}','${uname}','${email}','${password}','${mob}','${address}','${isRestaurant}');
+  `,
+    (err, rows) => {
+      if (err) throw err;
+      console.log(rows);
+      reponse.sendStatus(200);
+    }
+  );
+});
+
+app.post("/login", (request, response) => {
+  const user = {
+    username: request.body.uname,
+  };
+
+  console.log("Data received", request.body);
+  const { uname, password } = request.body;
+  con.query(
+    `select * from customer where (user = '${uname}' and password='${password}') or (email = '${uname}' and password='${password}');
   `,
     (err, rows) => {
       if (err) throw err;
       console.log("Data received from Db:");
       console.log(rows);
-      reponse.send("Okay");
+
+      if (rows && rows.length) {
+        jwt.sign({ user }, "secretKey", { expiresIn: "5m" }, (err, token) => {
+          response.json({
+            token,
+            userData: rows,
+          });
+        });
+      } else {
+        response.sendStatus(403);
+      }
     }
   );
-});
-
-app.post("/login", (req, res) => {
-  const user = {
-    username: req.body.uname,
-  };
-
-  jwt.sign({ user }, "secretKey", { expiresIn: "5m" }, (err, token) => {
-    res.json({
-      token,
-    });
-  });
-
-  // console.log("Data received", request.body);
-  // const { uname, password } = request.body;
-  // con.query(
-  //   `select * from customer where (user = '${uname}' and password='${password}') or (email = '${uname}' and password='${password}');
-  // `,
-  //   (err, rows) => {
-  //     if (err) throw err;
-  //     console.log("Data received from Db:");
-  //     console.log(rows);
-
-  //     if (rows && rows.length) {
-  //       reponse.send(rows);
-  //     } else {
-  //       reponse.send("Login Failed");
-  //     }
-  //   }
-  // );
 });
 
 app.post("/posts", verifyToken, (req, res) => {

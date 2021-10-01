@@ -24,7 +24,7 @@ $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
     width: 70%;
   }
   h5 {
-    font-size: 30px;
+    font-size: 180%;
     font-family: $primary-font;
   }
   input {
@@ -84,9 +84,41 @@ $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
     padding-left: 12px;
     margin: 30px;
   }
+  button{
+    max-height: 100%;
+    max-width: 100%;
+    margin-top: 30px;
+    width: 70px;
+    height: 50px;
+    float: right;
+    background-color: green;
+    color: white;
+    font-weight: 900;
+    border-radius: 20px;
+    border: 0px;
+  }
   img {
     margin-left: 30px;
   }
+  .restLogo{
+      max-height: 100%;
+      max-width: 100%;
+      width:100px;
+      height:100px;
+      background-size: cover;
+      background-image: url('https://us.123rf.com/450wm/friendesigns/friendesigns1902/friendesigns190200738/117794294-modern-kitchen-logo.jpg?ver=6');
+      float: right;
+    }
+    .userLogo{
+      max-height: 100%;
+      max-width: 100%;
+      width:100px;
+      height:100px;
+      background-size: cover;
+      background-image: url("https://image.pngaaa.com/345/1582345-middle.png");
+      float: right;
+    }
+    
 }
 
 img:hover {

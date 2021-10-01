@@ -36,9 +36,9 @@ export const Login = ({ changeActiveTab, loginUser }) => {
     const data = { uname, password };
     axios.post("http://localhost:8080/login", data).then((res) => {
       if (res.status === 200) {
-        // loginUser(res.data[0]);
         const postData = { ...res["data"] };
-        localStorage.setItem("userData", postData);
+        localStorage.setItem("token", JSON.stringify(postData["token"]));
+        loginUser(postData["userData"]);
         changeActiveTab(CONSTANTS.DASHBOARD);
       } else {
         console.log("Data post failed ");
@@ -55,7 +55,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
         <span>Sign in with your user name or email address.</span>
         <input
           id="uname"
-          placeholder="User Name/Email"
+          placeholder="User Name / Email / Restaurant ID"
           onChange={handleChange}
         ></input>
         <input

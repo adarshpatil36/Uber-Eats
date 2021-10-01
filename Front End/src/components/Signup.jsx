@@ -6,28 +6,36 @@ import Logo from "./Logo";
 import { CONSTANTS } from "../constants/constants";
 import RestaurantSignup from "./RestaurantSignup";
 import { CustomerSignup } from "./CustomerSignup";
+import { ACTION_TYPE } from "../actions/ActionTypes";
 
-export const Signup = ({ loginTab, changeActiveTab, isRestaurant }) => {
+export const Signup = ({
+  loginTab,
+  changeActiveTab,
+  isRestaurant,
+  loginUser,
+}) => {
   const [data, setData] = useState({
     fname: "",
     lname: "",
     uname: "",
+    address: "",
     email: "",
     password: "",
     confPassword: "",
+    mob: "",
   });
 
   const handleChange = (e) => {
-    console.log(e);
     const { id, value } = e.target;
     setData({ ...data, [id]: value });
   };
 
-  const signUp = () => {
+  const signUp = async () => {
     const { confPassword, ...postData } = data;
     postData["isRestaurant"] = isRestaurant;
-    axios.post("http://localhost:8080/adduser", postData).then((res) => {
+    await axios.post("http://localhost:8080/adduser", postData).then((res) => {
       if (res.status === 200) {
+        // loginUser(postData);
         changeActiveTab(CONSTANTS.DASHBOARD);
       } else {
         console.log("Data post failed ");
@@ -62,6 +70,11 @@ Signup.propTypes = {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (data) =>
+      dispatch({ type: ACTION_TYPE.SET_LOGIN_DATA, value: data }),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

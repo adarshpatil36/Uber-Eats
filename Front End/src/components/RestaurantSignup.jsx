@@ -34,6 +34,12 @@ export const RestaurantSignup = ({ loginTab, data, handleChange, signUp }) => {
           onChange={handleChange}
         ></input>
         <input
+          id="mob"
+          placeholder="Mobile Number"
+          value={data["mob"]}
+          onChange={handleChange}
+        ></input>
+        <input
           id="email"
           placeholder="Email ID"
           value={data["email"]}

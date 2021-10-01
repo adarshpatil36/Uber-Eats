@@ -1,9 +1,9 @@
-import React  from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import Logo from "./Logo";
 
-export const CustomerSignup = ({ loginTab, handleChange, signUp, data}) => {
+export const CustomerSignup = ({ loginTab, handleChange, signUp, data }) => {
   return (
     <div className="login">
       <Logo />
@@ -31,6 +31,12 @@ export const CustomerSignup = ({ loginTab, handleChange, signUp, data}) => {
           id="address"
           placeholder="Address"
           value={data["address"]}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="mob"
+          placeholder="Mobile Number"
+          value={data["mob"]}
           onChange={handleChange}
         ></input>
         <input
@@ -66,4 +72,3 @@ export const CustomerSignup = ({ loginTab, handleChange, signUp, data}) => {
 CustomerSignup.propTypes = {
   props: PropTypes,
 };
-

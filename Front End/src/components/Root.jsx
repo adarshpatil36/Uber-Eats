@@ -2,14 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { ACTION_TYPE } from "../actions/ActionTypes";
-import { CustomerSignup } from "./CustomerSignup";
 import Login from "./Login";
 import { Dashboard } from "./Dashboard";
-import { RestaurantSignup } from "./RestaurantSignup";
 import { CONSTANTS } from "../constants/constants";
 import Signup from "./Signup";
 
-export const Root = ({ activeTab, loginUser, changeActiveTab }) => {
+export const Root = ({ activeTab, userData, changeActiveTab }) => {
   const loginTab = () => {
     changeActiveTab(CONSTANTS.LOGIN_TAB);
   };
@@ -32,7 +30,9 @@ export const Root = ({ activeTab, loginUser, changeActiveTab }) => {
           />
         );
       case CONSTANTS.DASHBOARD:
-        return <Dashboard />;
+        return (
+          <Dashboard userData={userData} changeActiveTab={changeActiveTab} />
+        );
 
       default:
         return <></>;
@@ -46,7 +46,8 @@ Root.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeTab: state.data.activeTab,
+  activeTab: state?.data?.activeTab,
+  userData: state?.data?.userData?.[0],
 });
 
 const mapDispatchToProps = (dispatch) => {

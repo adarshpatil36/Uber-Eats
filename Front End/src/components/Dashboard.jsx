@@ -7,7 +7,7 @@ import DisplayResultCard, { ResultDisplay } from "./DisplayResultCard";
 import { FilterCard } from "./FilterCard";
 import OfferCard from "./OfferCard";
 
-export const Dashboard = (props) => {
+export const Dashboard = ({ userData, changeActiveTab }) => {
   var data = [
     "https://duyt4h9nfnj50.cloudfront.net/new_search_home_eats_icon/Pizza_BrowseHome@3x.png",
     "https://duyt4h9nfnj50.cloudfront.net/new_search_home_eats_icon/FastFood_BrowseHome@3x.png",
@@ -32,7 +32,7 @@ export const Dashboard = (props) => {
           </p>
         );
       })} */}
-      <NavBar />
+      <NavBar userData={userData} changeActiveTab={changeActiveTab} />
       <TopFilter />
       <OfferCard />
       <div className="section">
@@ -44,7 +44,7 @@ export const Dashboard = (props) => {
 };
 
 Dashboard.propTypes = {
-  props: PropTypes,
+  userData: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({});
