@@ -4,13 +4,18 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { ACTION_TYPE } from "../actions/ActionTypes";
 import Logo from "./Logo";
+import { CONSTANTS } from "../constants/constants";
 
 export const Login = ({ changeActiveTab, loginUser }) => {
   const [uname, setUname] = useState("");
   const [password, setPassword] = useState("");
 
   const signUpTab = () => {
-    changeActiveTab(1);
+    changeActiveTab(CONSTANTS.CUSTOMER_SIGNUP);
+  };
+
+  const registerRestaurant = () => {
+    changeActiveTab(CONSTANTS.RESTAURANT_SIGNUP);
   };
 
   const handleChange = (e) => {
@@ -31,9 +36,10 @@ export const Login = ({ changeActiveTab, loginUser }) => {
     const data = { uname, password };
     console.log("Post Data", data);
     axios.post("http://localhost:8080/login", data).then((res) => {
-      if (res.data === "Okay") {
+      if (res.data.length !== 0) {
         console.log("Data posted Successful ");
-        changeActiveTab(2);
+        loginUser(res.data[0]);
+        changeActiveTab(CONSTANTS.DASHBOARD);
       } else {
         console.log("Data post failed ");
       }
@@ -62,6 +68,10 @@ export const Login = ({ changeActiveTab, loginUser }) => {
           New to Uber?
           <span onClick={() => signUpTab()}> Create an account</span>
         </p>
+        <p>
+          Register a restaurant @ Uber?
+          <span onClick={() => registerRestaurant()}> Register restaurant</span>
+        </p>
       </div>
       <footer>
         <h1>© 2020 Uber Technologies, Inc.</h1>
@@ -77,7 +87,7 @@ Login.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    loginUser: state.loginReducer.loginUser,
+    loginUser: state.data.loginUser,
   };
 };
 
@@ -85,6 +95,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeActiveTab: (tabID) =>
       dispatch({ type: ACTION_TYPE.SET_ACTIVE_TAB, value: tabID }),
+    loginUser: (data) =>
+      dispatch({ type: ACTION_TYPE.SET_LOGIN_DATA, value: data }),
   };
 };
 

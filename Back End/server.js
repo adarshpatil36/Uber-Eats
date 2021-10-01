@@ -108,10 +108,9 @@ app.post("/login", function (request, reponse) {
       if (err) throw err;
       console.log("Data received from Db:");
       console.log(rows);
-      debugger;
 
       if (rows && rows.length) {
-        reponse.send("Okay");
+        reponse.send(rows);
       } else {
         reponse.send("Login Failed");
       }

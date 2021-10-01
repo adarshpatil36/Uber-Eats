@@ -5,38 +5,22 @@ import axios from "axios";
 import Logo from "./Logo";
 import { CONSTANTS } from "../constants/constants";
 
-export const CustomerSignup = ({ loginTab, changeActiveTab }) => {
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [uname, setUname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export const RestaurantSignup = ({ loginTab, changeActiveTab }) => {
+  const [data, setData] = useState({
+    fname: "",
+    lname: "",
+    uname: "",
+    email: "",
+    password: "",
+  });
 
   const handleChange = (e) => {
     console.log(e);
-    switch (e.target.id) {
-      case "fname":
-        setFname(e.target.value);
-        break;
-      case "lname":
-        setLname(e.target.value);
-        break;
-      case "uname":
-        setUname(e.target.value);
-        break;
-      case "email":
-        setEmail(e.target.value);
-        break;
-      case "password":
-        setPassword(e.target.value);
-        break;
-      default:
-        break;
-    }
+    const { id, value } = e.target;
+    setData({ ...data, [id]: value });
   };
 
   const signUp = () => {
-    const data = { fname, lname, uname, email, password };
     console.log("Post Data", data);
     axios.post("http://localhost:8080/adduser", data).then((res) => {
       if (res.data === "Okay") {
@@ -55,36 +39,36 @@ export const CustomerSignup = ({ loginTab, changeActiveTab }) => {
         <input
           id="fname"
           placeholder="First Name"
-          value={fname}
+          value={data["fname"]}
           onChange={handleChange}
         ></input>
         <input
           id="lname"
           placeholder="Last Name"
-          value={lname}
+          value={data["lname"]}
           onChange={handleChange}
         ></input>
         <input
           id="uname"
           placeholder="User Name"
-          value={uname}
+          value={data["uname"]}
           onChange={handleChange}
         ></input>
         <input
           id="email"
           placeholder="Email ID"
-          value={email}
+          value={data["email"]}
           onChange={handleChange}
         ></input>
         <input
           id="password"
           placeholder="Password"
-          value={password}
+          value={data["password"]}
           onChange={handleChange}
         ></input>
         <button onClick={signUp}>Next</button>
         <p>
-          Already use Uber?
+          Already registered on Uber?
           <span onClick={() => loginTab()}> Sign in</span>
         </p>
       </div>
@@ -92,10 +76,12 @@ export const CustomerSignup = ({ loginTab, changeActiveTab }) => {
   );
 };
 
-CustomerSignup.propTypes = {
+RestaurantSignup.propTypes = {
   props: PropTypes,
 };
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, null)(CustomerSignup);
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantSignup);

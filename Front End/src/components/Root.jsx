@@ -5,10 +5,12 @@ import { ACTION_TYPE } from "../actions/ActionTypes";
 import { CustomerSignup } from "./CustomerSignup";
 import Login from "./Login";
 import { Dashboard } from "./Dashboard";
+import { RestaurantSignup } from "./RestaurantSignup";
+import { CONSTANTS } from "../constants/constants";
 
 export const Root = ({ activeTab, loginUser, changeActiveTab }) => {
   const loginTab = () => {
-    changeActiveTab(0);
+    changeActiveTab(CONSTANTS.LOGIN_TAB);
   };
 
   const getLoginTab = () => {
@@ -16,12 +18,25 @@ export const Root = ({ activeTab, loginUser, changeActiveTab }) => {
   };
   const getActiveTabContent = () => {
     switch (activeTab) {
-      case 3:
+      case CONSTANTS.LOGIN_TAB:
         return getLoginTab();
-      case 1:
-        return <CustomerSignup loginTab={loginTab} />;
-      case 0:
+      case CONSTANTS.CUSTOMER_SIGNUP:
+        return (
+          <CustomerSignup
+            loginTab={loginTab}
+            changeActiveTab={changeActiveTab}
+          />
+        );
+      case CONSTANTS.RESTAURANT_SIGNUP:
+        return (
+          <RestaurantSignup
+            loginTab={loginTab}
+            changeActiveTab={changeActiveTab}
+          />
+        );
+      case CONSTANTS.DASHBOARD:
         return <Dashboard />;
+
       default:
         return <></>;
     }
@@ -34,7 +49,7 @@ Root.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeTab: state.loginReducer.activeTab,
+  activeTab: state.data.activeTab,
 });
 
 const mapDispatchToProps = (dispatch) => {
