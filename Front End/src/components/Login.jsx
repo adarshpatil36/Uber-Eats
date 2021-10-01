@@ -34,11 +34,11 @@ export const Login = ({ changeActiveTab, loginUser }) => {
 
   const login = () => {
     const data = { uname, password };
-    console.log("Post Data", data);
     axios.post("http://localhost:8080/login", data).then((res) => {
-      if (res.data.length !== 0) {
-        console.log("Data posted Successful ");
-        loginUser(res.data[0]);
+      if (res.status === 200) {
+        // loginUser(res.data[0]);
+        const postData = { ...res["data"] };
+        localStorage.setItem("userData", postData);
         changeActiveTab(CONSTANTS.DASHBOARD);
       } else {
         console.log("Data post failed ");
@@ -52,14 +52,15 @@ export const Login = ({ changeActiveTab, loginUser }) => {
 
       <div className="loginTab">
         <h5>Welcome Back {loginUser} </h5>
-        <span>Sign in with your email address or user name.</span>
+        <span>Sign in with your user name or email address.</span>
         <input
           id="uname"
-          placeholder="User Name"
+          placeholder="User Name/Email"
           onChange={handleChange}
         ></input>
         <input
           id="password"
+          type="password"
           placeholder="Password"
           onChange={handleChange}
         ></input>

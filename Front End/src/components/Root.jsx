@@ -7,6 +7,7 @@ import Login from "./Login";
 import { Dashboard } from "./Dashboard";
 import { RestaurantSignup } from "./RestaurantSignup";
 import { CONSTANTS } from "../constants/constants";
+import Signup from "./Signup";
 
 export const Root = ({ activeTab, loginUser, changeActiveTab }) => {
   const loginTab = () => {
@@ -21,17 +22,13 @@ export const Root = ({ activeTab, loginUser, changeActiveTab }) => {
       case CONSTANTS.LOGIN_TAB:
         return getLoginTab();
       case CONSTANTS.CUSTOMER_SIGNUP:
-        return (
-          <CustomerSignup
-            loginTab={loginTab}
-            changeActiveTab={changeActiveTab}
-          />
-        );
+        return <Signup loginTab={loginTab} changeActiveTab={changeActiveTab} />;
       case CONSTANTS.RESTAURANT_SIGNUP:
         return (
-          <RestaurantSignup
+          <Signup
             loginTab={loginTab}
             changeActiveTab={changeActiveTab}
+            isRestaurant
           />
         );
       case CONSTANTS.DASHBOARD:
