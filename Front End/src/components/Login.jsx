@@ -12,10 +12,12 @@ export const Login = ({ changeActiveTab, loginUser }) => {
 
   const signUpTab = () => {
     changeActiveTab(CONSTANTS.CUSTOMER_SIGNUP);
+    window.location.href = "http://localhost:3000/signup";
   };
 
   const registerRestaurant = () => {
     changeActiveTab(CONSTANTS.RESTAURANT_SIGNUP);
+    window.location.href = "http://localhost:3000/signup";
   };
 
   const handleChange = (e) => {
@@ -38,8 +40,9 @@ export const Login = ({ changeActiveTab, loginUser }) => {
       if (res.status === 200) {
         const postData = { ...res["data"] };
         localStorage.setItem("token", JSON.stringify(postData["token"]));
-        loginUser(postData["userData"]);
+        loginUser(postData["userData"][0]);
         changeActiveTab(CONSTANTS.DASHBOARD);
+        window.location.href = "http://localhost:3000/dashboard";
       } else {
         console.log("Data post failed ");
       }

@@ -100,11 +100,16 @@ $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
   img {
     margin-left: 30px;
   }
+  span{
+    float: right;
+    margin-top: 40px;
+  }
   .restLogo{
       max-height: 100%;
       max-width: 100%;
       width:100px;
       height:100px;
+      margin: 5px;
       background-size: cover;
       background-image: url('https://us.123rf.com/450wm/friendesigns/friendesigns1902/friendesigns190200738/117794294-modern-kitchen-logo.jpg?ver=6');
       float: right;
@@ -114,8 +119,9 @@ $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
       max-width: 100%;
       width:100px;
       height:100px;
+      margin: 5px;
       background-size: cover;
-      background-image: url("https://image.pngaaa.com/345/1582345-middle.png");
+      background-image: url("https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg");
       float: right;
     }
     

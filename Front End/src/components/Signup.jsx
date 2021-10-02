@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import axios from "axios";
-import Logo from "./Logo";
 import { CONSTANTS } from "../constants/constants";
 import RestaurantSignup from "./RestaurantSignup";
 import { CustomerSignup } from "./CustomerSignup";
 import { ACTION_TYPE } from "../actions/ActionTypes";
 
 export const Signup = ({
-  loginTab,
   changeActiveTab,
   isRestaurant,
+  activeTab,
   loginUser,
 }) => {
   const [data, setData] = useState({
@@ -25,6 +24,9 @@ export const Signup = ({
     mob: "",
   });
 
+  const loginTab = () => {
+    window.location.href = "http://localhost:3000/login";
+  };
   const handleChange = (e) => {
     const { id, value } = e.target;
     setData({ ...data, [id]: value });
@@ -32,11 +34,12 @@ export const Signup = ({
 
   const signUp = async () => {
     const { confPassword, ...postData } = data;
-    postData["isRestaurant"] = isRestaurant;
+    postData["isRestaurant"] = !!isRestaurant;
     await axios.post("http://localhost:8080/adduser", postData).then((res) => {
       if (res.status === 200) {
-        // loginUser(postData);
+        loginUser(postData);
         changeActiveTab(CONSTANTS.DASHBOARD);
+        window.location.href = "http://localhost:3000/dashboard";
       } else {
         console.log("Data post failed ");
       }
@@ -68,10 +71,15 @@ Signup.propTypes = {
   props: PropTypes,
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  activeTab: state.data.activeTab,
+  isRestaurant: state.data.activeTab === CONSTANTS.RESTAURANT_SIGNUP,
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    changeActiveTab: (tabID) =>
+      dispatch({ type: ACTION_TYPE.SET_ACTIVE_TAB, value: tabID }),
     loginUser: (data) =>
       dispatch({ type: ACTION_TYPE.SET_LOGIN_DATA, value: data }),
   };

@@ -1,60 +1,19 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { ACTION_TYPE } from "../actions/ActionTypes";
 import Login from "./Login";
 import { Dashboard } from "./Dashboard";
-import { CONSTANTS } from "../constants/constants";
 import Signup from "./Signup";
+import { Route } from "react-router";
 
-export const Root = ({ activeTab, userData, changeActiveTab }) => {
-  const loginTab = () => {
-    changeActiveTab(CONSTANTS.LOGIN_TAB);
-  };
-
-  const getLoginTab = () => {
-    return <Login></Login>;
-  };
-  const getActiveTabContent = () => {
-    switch (activeTab) {
-      case CONSTANTS.LOGIN_TAB:
-        return getLoginTab();
-      case CONSTANTS.CUSTOMER_SIGNUP:
-        return <Signup loginTab={loginTab} changeActiveTab={changeActiveTab} />;
-      case CONSTANTS.RESTAURANT_SIGNUP:
-        return (
-          <Signup
-            loginTab={loginTab}
-            changeActiveTab={changeActiveTab}
-            isRestaurant
-          />
-        );
-      case CONSTANTS.DASHBOARD:
-        return (
-          <Dashboard userData={userData} changeActiveTab={changeActiveTab} />
-        );
-
-      default:
-        return <></>;
-    }
-  };
-  return <>{getActiveTabContent()}</>;
+const Root = () => {
+  return (
+    <>
+      {/*Render Different Component based on Route*/}
+      <Route path="/" exact component={Login} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route path="/dashboard" component={Dashboard} />
+    </>
+  );
 };
 
-Root.propTypes = {
-  props: PropTypes,
-};
-
-const mapStateToProps = (state) => ({
-  activeTab: state?.data?.activeTab,
-  userData: state?.data?.userData?.[0],
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeActiveTab: (tabID) =>
-      dispatch({ type: ACTION_TYPE.SET_ACTIVE_TAB, value: tabID }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Root);
+export default Root;
