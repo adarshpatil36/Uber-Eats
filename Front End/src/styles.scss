@@ -72,25 +72,30 @@ $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
 .topFilter {
   display: flex;
   justify-content: center;
+  width: 100%;
   img {
     width: 8%;
   }
 }
 
 .NavBar {
+  margin: 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
   input {
+
     height: 30px;
     border-radius: 20px;
     padding-left: 12px;
-    margin: 30px;
+    margin: 10px;
+    border: 1px solid black;
+
   }
   button{
-    max-height: 100%;
-    max-width: 100%;
-    margin-top: 30px;
     width: 70px;
-    height: 50px;
-    float: right;
+    height: 35px;
     background-color: green;
     color: white;
     font-weight: 900;
@@ -98,7 +103,7 @@ $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
     border: 0px;
   }
   img {
-    margin-left: 30px;
+    // margin-left: 30px;
   }
   span{
     float: right;

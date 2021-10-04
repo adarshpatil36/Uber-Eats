@@ -12,7 +12,6 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
     changeActiveTab(CONSTANTS.LOGIN_TAB);
     logout();
     history.push("/login");
-    // window.location.href = "http://localhost:3000/login";
   };
   return (
     userData && (
@@ -20,19 +19,19 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
         <Logo />
         <input placeholder="Mode"></input>
         <input placeholder="Address"></input>
-        <input placeholder="Description"></input>
+        <input placeholder="What are your carvings?" type="search"></input>
 
         <button onClick={onLogout}>Logout</button>
         {userData.isRestaurant.toString() === "true" ? (
-          <>
+          <div>
             <div className="restLogo"> </div>
             <span>{userData.uname || userData.user}</span>
-          </>
+          </div>
         ) : (
-          <>
-            <div className="userLogo"> </div>
-            <span>{userData.uname || userData.user}</span>
-          </>
+          <div>
+            <div className="userLogo"></div>
+            <div>{userData.uname || userData.user}</div>
+          </div>
         )}
       </div>
     )
