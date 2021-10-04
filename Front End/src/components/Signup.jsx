@@ -6,6 +6,7 @@ import { CONSTANTS } from "../constants/constants";
 import RestaurantSignup from "./RestaurantSignup";
 import { CustomerSignup } from "./CustomerSignup";
 import { ACTION_TYPE } from "../actions/ActionTypes";
+import { useHistory } from "react-router";
 
 export const Signup = ({
   changeActiveTab,
@@ -23,9 +24,10 @@ export const Signup = ({
     confPassword: "",
     mob: "",
   });
+  let history = useHistory();
 
   const loginTab = () => {
-    window.location.href = "http://localhost:3000/login";
+    history.push("./login");
   };
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -39,7 +41,7 @@ export const Signup = ({
       if (res.status === 200) {
         loginUser(postData);
         changeActiveTab(CONSTANTS.DASHBOARD);
-        window.location.href = "http://localhost:3000/dashboard";
+        history.push("/dashboard");
       } else {
         console.log("Data post failed ");
       }

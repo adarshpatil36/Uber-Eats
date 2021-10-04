@@ -12,6 +12,8 @@ const LoginReducer = (state = INITIAL_STATE, action) => {
       return { ...state, activeTab: action.value };
     case ACTION_TYPE.SET_LOGIN_DATA:
       return { ...state, userData: action.value };
+    case ACTION_TYPE.CLEAR_USER_DATA:
+      return INITIAL_STATE;
     default:
       return state;
   }

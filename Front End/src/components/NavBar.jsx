@@ -1,14 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router";
 import { ACTION_TYPE } from "../actions/ActionTypes";
 import { CONSTANTS } from "../constants/constants";
 import Logo from "./Logo";
 
-const NavBar = ({ userData, changeActiveTab }) => {
-  const logout = () => {
+const NavBar = ({ userData, logout, changeActiveTab }) => {
+  const history = useHistory();
+  const onLogout = () => {
     localStorage.setItem("token", "");
     changeActiveTab(CONSTANTS.LOGIN_TAB);
-    window.location.href = "http://localhost:3000/login";
+    logout();
+    history.push("/login");
+    // window.location.href = "http://localhost:3000/login";
   };
   return (
     userData && (
@@ -18,16 +22,16 @@ const NavBar = ({ userData, changeActiveTab }) => {
         <input placeholder="Address"></input>
         <input placeholder="Description"></input>
 
-        <button onClick={logout}>Logout</button>
-        {userData.isRestaurant ? (
+        <button onClick={onLogout}>Logout</button>
+        {userData.isRestaurant.toString() === "true" ? (
           <>
             <div className="restLogo"> </div>
-            <span>{userData.uname}</span>
+            <span>{userData.uname || userData.user}</span>
           </>
         ) : (
           <>
             <div className="userLogo"> </div>
-            <span>{userData.uname}</span>
+            <span>{userData.uname || userData.user}</span>
           </>
         )}
       </div>
@@ -43,6 +47,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeActiveTab: (tabID) =>
       dispatch({ type: ACTION_TYPE.SET_ACTIVE_TAB, value: tabID }),
+    logout: () => dispatch({ type: ACTION_TYPE.CLEAR_USER_DATA }),
   };
 };
 

@@ -4,20 +4,23 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { ACTION_TYPE } from "../actions/ActionTypes";
 import Logo from "./Logo";
+import { useHistory } from "react-router-dom";
 import { CONSTANTS } from "../constants/constants";
 
 export const Login = ({ changeActiveTab, loginUser }) => {
   const [uname, setUname] = useState("");
   const [password, setPassword] = useState("");
 
+  let history = useHistory();
+
   const signUpTab = () => {
     changeActiveTab(CONSTANTS.CUSTOMER_SIGNUP);
-    window.location.href = "http://localhost:3000/signup";
+    history.push("/signup");
   };
 
   const registerRestaurant = () => {
     changeActiveTab(CONSTANTS.RESTAURANT_SIGNUP);
-    window.location.href = "http://localhost:3000/signup";
+    history.push("/signup");
   };
 
   const handleChange = (e) => {
@@ -42,7 +45,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
         localStorage.setItem("token", JSON.stringify(postData["token"]));
         loginUser(postData["userData"][0]);
         changeActiveTab(CONSTANTS.DASHBOARD);
-        window.location.href = "http://localhost:3000/dashboard";
+        history.push("/dashboard");
       } else {
         console.log("Data post failed ");
       }
@@ -61,12 +64,15 @@ export const Login = ({ changeActiveTab, loginUser }) => {
           placeholder="User Name / Email / Restaurant ID"
           onChange={handleChange}
         ></input>
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          onChange={handleChange}
-        ></input>
+        <>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            onChange={handleChange}
+          ></input>
+          {/* {<span className="errorMessage"> Invalid Credentials </span>} */}
+        </>
         <button onClick={login}>Next</button>
         <p>
           New to Uber?
