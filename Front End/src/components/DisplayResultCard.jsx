@@ -5,11 +5,13 @@ import { URLS } from "../constants/api";
 
 export const DisplayResultCard = (props) => {
   return (
-    <div className="displayResult">
+    <div className="displayResultCard">
       <p> Popular near you</p>
-      {URLS.FOOD_ITEMS.map((item) => {
-        return <img src={item} alt="" onClick={() => alert("Hello")}></img>;
-      })}
+      <div className="restaurants">
+        {URLS.FOOD_ITEMS.map((item) => {
+          return <img src={item} alt="" onClick={() => alert("Hello")}></img>;
+        })}
+      </div>
     </div>
   );
 };

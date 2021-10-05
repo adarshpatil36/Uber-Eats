@@ -20,19 +20,28 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
         <input placeholder="Mode"></input>
         <input placeholder="Address"></input>
         <input placeholder="What are your carvings?" type="search"></input>
-
-        <button onClick={onLogout}>Logout</button>
-        {userData.isRestaurant.toString() === "true" ? (
-          <div>
-            <div className="restLogo"> </div>
-            <span>{userData.uname || userData.user}</span>
-          </div>
-        ) : (
-          <div>
-            <div className="userLogo"></div>
-            <div>{userData.uname || userData.user}</div>
-          </div>
-        )}
+        <div className="loginIcon">
+          {userData?.isRestaurant?.toString() === "true" ? (
+            <div>
+              {/* <div className="restLogo"> </div> */}
+              <img
+                src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+                alt="rest logo"
+              />
+              <span>{userData.uname || userData.user}</span>
+            </div>
+          ) : (
+            <div>
+              {/* <div className="userLogo"></div> */}
+              <img
+                src="https://us.123rf.com/450wm/friendesigns/friendesigns1902/friendesigns190200738/117794294-modern-kitchen-logo.jpg?ver=6"
+                alt="user logo"
+              />
+              <div>{userData.uname || userData.user}</div>
+            </div>
+          )}
+          <button onClick={onLogout}>Logout</button>
+        </div>
       </div>
     )
   );

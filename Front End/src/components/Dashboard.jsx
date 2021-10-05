@@ -6,17 +6,16 @@ import NavBar from "./NavBar";
 import DisplayResultCard from "./DisplayResultCard";
 import { FilterCard } from "./FilterCard";
 import OfferCard from "./OfferCard";
+import SectionCard from "./SectionCard";
 
 export const Dashboard = ({ userData, changeActiveTab }) => {
   return (
     <div>
       <NavBar />
       <TopFilter />
+      <hr />
       <OfferCard />
-      <div className="section">
-        <FilterCard></FilterCard>
-        <DisplayResultCard></DisplayResultCard>
-      </div>
+      <SectionCard></SectionCard>
     </div>
   );
 };

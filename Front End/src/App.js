@@ -1,7 +1,7 @@
 import "./styles.scss";
 import "./App.css";
 import Root from "./components/Root";
-import { BrowserRouter } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
