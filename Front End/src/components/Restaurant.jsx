@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import NavBar from "./NavBar";
 import { dishes } from "../constants/app";
+import IncDecCounter from "./IncDecCounter";
 
 export const Restaurant = (props) => {
   const backgroundImgStyle = {
@@ -28,6 +29,7 @@ export const Restaurant = (props) => {
                 <p class="card-text">{item.desc}</p>
                 <h6 class="card-subtitle mb-2 text-muted">
                   ${item.price.toFixed(2)}
+                  <IncDecCounter />
                 </h6>
               </div>
             </div>
