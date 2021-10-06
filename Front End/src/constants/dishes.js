@@ -270,7 +270,9 @@ const processData = dishes.map((item, index) => {
   //       uindex = index;
   //     }
   //   }
+
   return {
+    id: Math.random().toString(16).slice(2),
     name: item,
     desc: desc[index],
     price: randomNumber(1, 10),

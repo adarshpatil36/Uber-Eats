@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { DisplayResultCard } from "./DisplayResultCard";
 import { AdvanceFilterCard } from "./AdvanceFilterCard";
+import DisplayResultCard from "./DisplayResultCard";
 
 export const SectionCard = (props) => {
   return (
