@@ -6,6 +6,7 @@ import { ACTION_TYPE } from "../actions/ActionTypes";
 import Logo from "./Logo";
 import { useHistory } from "react-router-dom";
 import { CONSTANTS } from "../constants/constants";
+import FooterCard from "./FooterCard";
 
 export const Login = ({ changeActiveTab, loginUser }) => {
   const [uname, setUname] = useState("");
@@ -55,7 +56,6 @@ export const Login = ({ changeActiveTab, loginUser }) => {
   return (
     <div className="login">
       <Logo />
-
       <div className="loginTab">
         <h5>Welcome Back {loginUser} </h5>
         <span>Sign in with your user name or email address.</span>
@@ -83,10 +83,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
           <span onClick={() => registerRestaurant()}> Register restaurant</span>
         </p>
       </div>
-      <footer>
-        <h1>© 2020 Uber Technologies, Inc.</h1>
-        <h1>Privacy Policy | Terms of Use</h1>
-      </footer>
+      <FooterCard />
     </div>
   );
 };

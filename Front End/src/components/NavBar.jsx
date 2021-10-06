@@ -19,22 +19,20 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
         <Logo />
         <input placeholder="Mode"></input>
         <input placeholder="Address"></input>
-        <input placeholder="What are your carvings?" type="search"></input>
+        <input placeholder="What are your cravings?" type="search"></input>
         <div className="loginIcon">
           {userData?.isRestaurant?.toString() === "true" ? (
             <div>
-              {/* <div className="restLogo"> </div> */}
               <img
-                src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
-                alt="rest logo"
+                src="https://us.123rf.com/450wm/friendesigns/friendesigns1902/friendesigns190200738/117794294-modern-kitchen-logo.jpg?ver=6"
+                alt="res logo"
               />
               <span>{userData.uname || userData.user}</span>
             </div>
           ) : (
             <div>
-              {/* <div className="userLogo"></div> */}
               <img
-                src="https://us.123rf.com/450wm/friendesigns/friendesigns1902/friendesigns190200738/117794294-modern-kitchen-logo.jpg?ver=6"
+                src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
                 alt="user logo"
               />
               <div>{userData.uname || userData.user}</div>
