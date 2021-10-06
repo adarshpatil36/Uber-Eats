@@ -20,7 +20,7 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
         <input placeholder="Mode"></input>
         <input placeholder="Address"></input>
         <input placeholder="What are your cravings?" type="search"></input>
-        <div className="loginIcon">
+        <span className="loginIcon">
           {userData?.isRestaurant?.toString() === "true" ? (
             <div>
               <img
@@ -35,11 +35,11 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
                 src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
                 alt="user logo"
               />
-              <div>{userData.uname || userData.user}</div>
+              <span>{userData.uname || userData.user}</span>
             </div>
           )}
           <button onClick={onLogout}>Logout</button>
-        </div>
+        </span>
       </div>
     )
   );

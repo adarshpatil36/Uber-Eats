@@ -27,10 +27,10 @@ export const Restaurant = (props) => {
                 <h5 class="card-title">{item.name}</h5>
                 <img class="card-img-top" src={item.image} alt="Dishes" />
                 <p class="card-text">{item.desc}</p>
-                <h6 class="card-subtitle mb-2 text-muted">
+                <span class="card-subtitle mb-2 text-muted">
                   ${item.price.toFixed(2)}
                   <IncDecCounter />
-                </h6>
+                </span>
               </div>
             </div>
           );
