@@ -96,25 +96,21 @@ $title-font-weight: 700;
     border: 1px solid black;
   }
   button {
-    width: 175px;
-    // height: 35px;
+    width: 100px;
     background-color: green;
     color: white;
     font-weight: 600;
     border-radius: 20px;
-    // padding: 0 15px;
+    margin: 0px 5px;
     border: 0px;
   }
   .loginIcon {
-    // margin-left: 30px;
     img {
       width: 70px;
       margin-bottom: 4px;
     }
   }
   span {
-    // float: right;
-    // margin-top: 40px;
     margin: 8px;
   }
   .restLogo {
@@ -182,25 +178,7 @@ img:hover {
     justify-content: space-between;
   }
 }
-// .displayResultCard {
-//   flex: 4;
-//   font-weight: $title-font-weight;
-//   margin-left: 16px;
-//   p {
-//     font-size: x-large;
-//   }
-//   .restaurants {
-//     display: flex;
-//     flex-wrap: wrap;
-//     align-content: stretch;
-//     > * {
-//       padding: 8px;
-//     }
-//     img {
-//       border-radius: 30px;
-//     }
-//   }
-// }
+
 .errorMessage {
   color: red;
   font-size: 15px;
@@ -208,16 +186,16 @@ img:hover {
 }
 
 .Restaurant {
-  .info{
+  .info {
     margin: 25px;
   }
   .dishCard {
     display: flex;
     flex-flow: wrap;
-    img{
+    img {
       min-height: 250px;
     }
-    p{
+    p {
       min-height: 70px;
     }
     .card {
@@ -226,23 +204,18 @@ img:hover {
       border-radius: 15px;
       border: 1px solid;
 
-      .card-subtitle{
+      .card-subtitle {
         display: flex;
         justify-content: space-between;
       }
-      .card-title{
+      .card-title {
         min-height: 70px;
       }
       .quantity {
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
         height: 30px;
       }
       .quantity__minus,
       .quantity__plus {
-        // width: 22px;
-        // height: 23px;
         cursor: pointer;
         color: white;
         background: #3e9920;
@@ -250,7 +223,6 @@ img:hover {
       }
       .quantity__minus:active,
       .quantity__plus:active {
-        // padding: 4px 20px;
         transform: scale(1.3);
       }
       .quantity__minus,
@@ -261,9 +233,6 @@ img:hover {
         border-radius: 14px;
         padding: 0px 18px;
         border: 0px;
-        // text-align: center;
-        // justify-content: center;
-        // display: flex;
       }
       .quantity__input {
         width: 30px;
@@ -283,7 +252,6 @@ img:hover {
     div {
       color: white;
       font: 40px UberMove, sans-serif;
-      // bottom: 10px;
       left: 180px;
       position: absolute;
       top: 44%;
@@ -292,37 +260,32 @@ img:hover {
   }
 }
 
+.toastHeader,
+.toastCard {
+  color: #fff !important;
+  background-color: #3e9920 !important;
+  border-bottom: 1px solid white !important;
+}
 
-.displayResultCard{
-  // * {
-  //   margin: 0;
-  //   padding: 0;
-  //   box-sizing: border-box;
-  // }
-  // body {
-  //   display: flex;
-  //   height: 100vh;
-  //   background: #eef;
-  // }
-  
+.displayResultCard {
   .container {
     margin: auto;
     padding: 2em;
     max-width: 68rem;
   }
-  
+
   .flex {
     display: flex;
     gap: 2em;
     justify-content: center;
     flex-flow: row wrap;
   }
-  
+
   .flex > * {
     flex-grow: 1;
     flex-basis: 0;
   }
-  
+
   .card {
     display: flex;
     flex-direction: column;
@@ -335,7 +298,7 @@ img:hover {
     transition: transform 270ms ease;
     position: relative;
   }
-  
+
   .card::before {
     content: "";
     position: absolute;
@@ -346,14 +309,14 @@ img:hover {
     background: linear-gradient(180deg, #0000 48%, 48%, green, 70%, white);
     opacity: 0;
   }
-  
+
   .card:hover::before {
     opacity: 1;
   }
   .card:hover {
     transform: scale(1.05);
   }
-  
+
   img {
     display: block;
     max-width: 100%;
@@ -362,19 +325,19 @@ img:hover {
     height: auto;
     margin-bottom: 1em;
   }
-  
+
   .card-body {
     height: 200px;
     padding: 1em 0;
   }
-  
+
   h3 {
     text-align: center;
     color: black;
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
   }
-  
+
   p {
     color: #0009;
     font-style: italic;
@@ -383,5 +346,200 @@ img:hover {
     margin: 1em auto;
     padding-inline: 0.5em;
     max-width: 35ch;
+  }
+}
+
+.OrderItem {
+  * {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+    text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  }
+
+  body {
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    background: #e0e0e0;
+    color: #000000;
+  }
+
+  ul {
+    list-style: none;
+    margin-bottom: 0px;
+  }
+
+  .button {
+    display: inline-block;
+    background: #0e8ce4;
+    border-radius: 5px;
+    height: 48px;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+  }
+
+  .button a {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 48px;
+    color: #ffffff;
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+  .button:hover {
+    opacity: 0.8;
+  }
+
+  .cart_section {
+    width: 100%;
+    padding-top: 93px;
+    padding-bottom: 111px;
+  }
+
+  .cart_title {
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  .cart_items {
+    margin-top: 8px;
+  }
+
+  .cart_list {
+    border: solid 1px #e8e8e8;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+  .cart_item {
+    width: 100%;
+    padding: 15px;
+    padding-right: 46px;
+  }
+
+  .cart_item_image {
+    width: 133px;
+    height: 133px;
+    float: left;
+  }
+
+  .cart_item_image img {
+    max-width: 100%;
+  }
+
+  .cart_item_info {
+    width: calc(100% - 133px);
+    float: left;
+    padding-top: 18px;
+  }
+
+  .cart_item_name {
+    margin-left: 7.53%;
+  }
+
+  .cart_item_title {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .cart_item_text {
+    font-size: 18px;
+    margin-top: 35px;
+  }
+
+  .cart_item_text span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 11px;
+    -webkit-transform: translateY(4px);
+    -moz-transform: translateY(4px);
+    -ms-transform: translateY(4px);
+    -o-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+
+  .cart_item_price {
+    text-align: right;
+  }
+
+  .cart_item_total {
+    text-align: right;
+  }
+
+  .order_total {
+    width: 100%;
+    height: 60px;
+    margin-top: 30px;
+    border: solid 1px #e8e8e8;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    padding-right: 46px;
+    padding-left: 15px;
+    background-color: #fff;
+  }
+
+  .order_total_title {
+    display: inline-block;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 60px;
+  }
+
+  .order_total_amount {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 26px;
+    line-height: 60px;
+  }
+
+  .cart_buttons {
+    margin-top: 60px;
+    text-align: right;
+  }
+
+  .cart_button_clear {
+    display: inline-block;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 48px;
+    color: rgba(0, 0, 0, 0.5);
+    background: #ffffff;
+    border: solid 1px #b2b2b2;
+    padding-left: 35px;
+    padding-right: 35px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 26px;
+  }
+
+  .cart_button_clear:hover {
+    border-color: #0e8ce4;
+    color: #0e8ce4;
+  }
+
+  .cart_button_checkout {
+    display: inline-block;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 48px;
+    color: #ffffff;
+    padding-left: 35px;
+    padding-right: 35px;
+    outline: none;
+    cursor: pointer;
+    background-color: #3e9920;
+    vertical-align: top;
   }
 }

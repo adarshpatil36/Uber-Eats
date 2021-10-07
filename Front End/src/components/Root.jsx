@@ -4,6 +4,8 @@ import { Dashboard } from "./Dashboard";
 import Signup from "./Signup";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Restaurant from "./Restaurant";
+import OrderItem from "./OrderItem";
+import Toast from "./ToastCard";
 
 const Root = () => {
   return (
@@ -14,6 +16,8 @@ const Root = () => {
         <Route path="/signup" component={Signup} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/restaurant" component={Restaurant} />
+        <Route path="/orders" component={OrderItem} />
+        <Route path="/toast" component={Toast} />
       </Switch>
     </BrowserRouter>
   );

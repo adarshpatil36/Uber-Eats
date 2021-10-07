@@ -13,19 +13,19 @@ export const AdvanceFilterCard = (props) => {
           <Accordion.Body>
             <div>
               <input type="radio" id="age1" value="30" />
-              <span>0 - 30</span>
+              <span>Picked for you</span>
             </div>
             <div>
               <input type="radio" id="age1" value="30" />
-              <span>0 - 30</span>
+              <span>Most Popular</span>
             </div>
             <div>
               <input type="radio" id="age1" value="30" />
-              <span>0 - 30</span>
+              <span>Rating</span>
             </div>
             <div>
               <input type="radio" id="age1" value="30" />
-              <span>0 - 30</span>
+              <span>Delivery Time</span>
             </div>
           </Accordion.Body>
         </Accordion.Item>

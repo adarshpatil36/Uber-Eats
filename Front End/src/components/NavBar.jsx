@@ -38,6 +38,7 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
               <span>{userData.uname || userData.user}</span>
             </div>
           )}
+          <button onClick={onLogout}>My Orders</button>
           <button onClick={onLogout}>Logout</button>
         </span>
       </div>

@@ -5,21 +5,32 @@ import NavBar from "./NavBar";
 import { dishes } from "../constants/static data/dishes";
 import IncDecCounter from "./IncDecCounter";
 import { ACTION_TYPE } from "../actions/ActionTypes";
+import { useHistory } from "react-router";
 
 const Restaurant = ({
-  clearRestaurantData,
   addDishes,
   restDishes,
   selectedRestaurant,
+  decreaseQuantity,
+  increaseQuantity,
 }) => {
+  let history = useHistory();
   useEffect(() => {
     addDishes(dishes);
     return () => {
-      clearRestaurantData();
+      // clearRestaurantData();
     };
   }, []);
   const backgroundImgStyle = {
     backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.6)), url('https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly9kMXJhbHNvZ25qbmczNy5jbG91ZGZyb250Lm5ldC85Y2VmYjIzYy00ODk5LTQ5ZGYtYjE0ZC1lOWMwZjdhMjRmMmIuanBlZw==')`,
+  };
+  const quantityCount = restDishes.reduce(function (acc = 0, obj) {
+    let quan = obj["quantity"] > 0 ? obj["quantity"] : 0;
+    return acc + quan;
+  }, 0);
+
+  const redirectToOrders = () => {
+    history.push("/orders");
   };
   return (
     <div className="Restaurant">
@@ -30,6 +41,7 @@ const Restaurant = ({
       <div className="info">
         <h6>Delivery Fee: {selectedRestaurant.deliveryFee}</h6>
         <h6>Delivery Time: {selectedRestaurant.deliveryTime}</h6>
+        <div onClick={redirectToOrders}>Cart no: {quantityCount} Items</div>
       </div>
       <h3>Dishes:</h3>
       <div className="dishCard">
@@ -42,7 +54,11 @@ const Restaurant = ({
                 <p class="card-text">{item.desc}</p>
                 <span class="card-subtitle mb-2 text-muted">
                   ${item.price.toFixed(2)}
-                  <IncDecCounter item={item} />
+                  <IncDecCounter
+                    item={item}
+                    increaseQuantity={increaseQuantity}
+                    decreaseQuantity={decreaseQuantity}
+                  />
                 </span>
               </div>
             </div>
@@ -69,6 +85,12 @@ const mapDispatchToProps = (dispatch) => {
     clearRestaurantData: () =>
       dispatch({ type: ACTION_TYPE.CLEAR_RESTAURANT_DATA }),
     addDishes: (val) => dispatch({ type: ACTION_TYPE.ADD_DISHES, value: val }),
+    increaseQuantity: (val) => {
+      dispatch({ type: ACTION_TYPE.INCREASE_QUANTITY, value: val });
+    },
+    decreaseQuantity: (val) => {
+      dispatch({ type: ACTION_TYPE.DECREASE_QUANTITY, value: val });
+    },
   };
 };
 
