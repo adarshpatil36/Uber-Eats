@@ -6,6 +6,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Restaurant from "./Restaurant";
 import OrderItem from "./OrderItem";
 import Toast from "./ToastCard";
+import { PastOrders } from "./PastOrders";
+import RestaurantDetails from "./RestaurantDetails";
+import Form from "./InfoForms";
+import InfoForms from "./InfoForms";
 
 const Root = () => {
   return (
@@ -17,7 +21,8 @@ const Root = () => {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/restaurant" component={Restaurant} />
         <Route path="/orders" component={OrderItem} />
-        <Route path="/toast" component={Toast} />
+        <Route path="/pastOrders" component={PastOrders} />
+        <Route path="/restaurantDetails" component={InfoForms} />
       </Switch>
     </BrowserRouter>
   );

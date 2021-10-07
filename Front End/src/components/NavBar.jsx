@@ -13,6 +13,9 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
     logout();
     history.push("/login");
   };
+  const redirectToOrder = () => {
+    history.push("/pastOrders");
+  };
   return (
     userData && (
       <div className="NavBar">
@@ -38,7 +41,7 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
               <span>{userData.uname || userData.user}</span>
             </div>
           )}
-          <button onClick={onLogout}>My Orders</button>
+          <button onClick={redirectToOrder}>My Orders</button>
           <button onClick={onLogout}>Logout</button>
         </span>
       </div>

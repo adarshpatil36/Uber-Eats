@@ -39,8 +39,10 @@ const Restaurant = ({
         <div>{selectedRestaurant.title}</div>
       </div>
       <div className="info">
-        <h6>Delivery Fee: {selectedRestaurant.deliveryFee}</h6>
-        <h6>Delivery Time: {selectedRestaurant.deliveryTime}</h6>
+        <div>
+          <h6>Delivery Fee: {selectedRestaurant.deliveryFee}</h6>
+          <h6>Delivery Time: {selectedRestaurant.deliveryTime}</h6>
+        </div>
         <div onClick={redirectToOrders}>Cart no: {quantityCount} Items</div>
       </div>
       <h3>Dishes:</h3>
