@@ -6,6 +6,8 @@ import { dishes } from "../constants/static data/dishes";
 import IncDecCounter from "./IncDecCounter";
 import { ACTION_TYPE } from "../actions/ActionTypes";
 import { useHistory } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const Restaurant = ({
   addDishes,
@@ -43,7 +45,10 @@ const Restaurant = ({
           <h6>Delivery Fee: {selectedRestaurant.deliveryFee}</h6>
           <h6>Delivery Time: {selectedRestaurant.deliveryTime}</h6>
         </div>
-        <div onClick={redirectToOrders}>Cart no: {quantityCount} Items</div>
+        <div onClick={redirectToOrders}>
+          <FontAwesomeIcon icon={faShoppingCart} className="shoppigCart" />
+          {quantityCount} Items
+        </div>
       </div>
       <h3>Dishes:</h3>
       <div className="dishCard">

@@ -190,9 +190,14 @@ img:hover {
     margin: 25px;
     display: flex;
     justify-content: space-between;
-    // div:nth-child(2) {
-    //   background: red;
-    // }
+    div:nth-child(2) {
+     min-width: 115px;
+     cursor: pointer;
+    }
+    .shoppigCart{
+      transform: scale(3.5);
+      margin-right: 30px;
+    }
   }
   .dishCard {
     display: flex;
