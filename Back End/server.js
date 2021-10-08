@@ -5,8 +5,8 @@ const mysql = require("mysql");
 var app = express();
 
 var bodyParser = require("body-parser");
-var session = require("express-session");
-var cookieParser = require("cookie-parser");
+// var session = require("express-session");
+// var cookieParser = require("cookie-parser");
 var cors = require("cors");
 app.set("view engine", "ejs");
 

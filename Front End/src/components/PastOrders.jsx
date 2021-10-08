@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import OrderRow from "./OrderRow";
+import NavBar from "./NavBar";
 
 export const PastOrders = (props) => {
   return (
     <div>
+      <NavBar />
       Past Orders
       <div className="OrderItem">
         <div class="cart_section">

@@ -555,12 +555,12 @@ img:hover {
 }
 
 
-.form-group{
-  margin: 20px;
-} 
-.form-statusbar{
-  margin: 20px;
-}
-.formHeader{
-  margin: 30px 0px;
+.RestaurantDetails{
+  button{
+    background-color: #3e9920;
+    border: 0px;
+  }
+  .custom-select{
+    padding: 8px;
+  }
 }

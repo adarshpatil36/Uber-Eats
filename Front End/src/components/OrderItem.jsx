@@ -5,6 +5,7 @@ import ToastCard from "./ToastCard";
 import { useHistory } from "react-router";
 import { ACTION_TYPE } from "../actions/ActionTypes";
 import OrderRow from "./OrderRow";
+import NavBar from "./NavBar";
 
 export const OrderItem = ({
   restDishes,
@@ -30,19 +31,22 @@ export const OrderItem = ({
   };
 
   return (
-    <div className="OrderItem">
-      <div class="cart_section">
-        <div class="container-fluid">
-          <OrderRow
-            quantityCount={quantityCount}
-            selectedRestaurant={selectedRestaurant}
-            selectedDishes={selectedDishes}
-            totalAmount={totalAmount}
-            showToast={showToast}
-          />
+    <>
+      <NavBar />
+      <div className="OrderItem">
+        <div class="cart_section">
+          <div class="container-fluid">
+            <OrderRow
+              quantityCount={quantityCount}
+              selectedRestaurant={selectedRestaurant}
+              selectedDishes={selectedDishes}
+              totalAmount={totalAmount}
+              showToast={showToast}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
