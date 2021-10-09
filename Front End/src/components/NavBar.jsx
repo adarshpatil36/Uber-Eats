@@ -16,10 +16,15 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
   const redirectToOrder = () => {
     history.push("/pastOrders");
   };
+
+  const redirectToDashboard = () => {
+    history.push("/dashboard");
+  };
+
   return (
     userData && (
       <div className="NavBar">
-        <Logo />
+        <Logo redirectToDashboard={redirectToDashboard} />
         <input placeholder="Mode"></input>
         <input placeholder="Address"></input>
         <input placeholder="What are your cravings?" type="search"></input>

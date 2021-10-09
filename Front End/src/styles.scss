@@ -18,7 +18,7 @@ $title-font-weight: 700;
   align-items: center;
 
   img {
-    padding: 90px 0px 30px;
+    margin: 50px;
     height: 32px;
     width: auto;
     max-width: inherit;
@@ -36,10 +36,13 @@ $title-font-weight: 700;
     padding-left: 12px;
   }
   button {
-    width: 102%;
+    width: 70%;
     background-color: $primary-color;
     color: $white-color;
     border: 0px;
+  }
+  .bottomGroup{
+    min-height: 80px;
   }
 
   .loginTab {
@@ -54,7 +57,7 @@ $title-font-weight: 700;
 
   .loginTab {
     // width: 28%;
-    width: 46%;
+    width: 60%;
   }
 
   .footerCard {

@@ -12,7 +12,7 @@ router.get("/", customer.findAll);
 router.get("/published", customer.findAllPublished);
 
 // Retrieve a single Tutorial with id
-router.get("/:id", customer.findOne);
+router.get("/:user", customer.findOne);
 
 // Update a Tutorial with id
 router.put("/:id", customer.update);

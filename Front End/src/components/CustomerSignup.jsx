@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Form, Button } from "react-bootstrap";
 
 import Logo from "./Logo";
 import { useHistory } from "react-router";
@@ -42,73 +43,120 @@ const CustomerSignup = ({ changeActiveTab, loginUser }) => {
       }
     });
   };
+  const redirectToLogin = () => {
+    history.push("/login");
+  };
 
   return (
     <div className="login">
-      <Logo />
+      <Logo navigateTo={redirectToLogin} />
       <div className="loginTab">
         <h5>Let's get started </h5>
-        <input
-          id="firstName"
-          placeholder="First Name"
-          value={data["firstName"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="lastName"
-          placeholder="Last Name"
-          value={data["lastName"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="user"
-          placeholder="User Name"
-          value={data["user"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="address"
-          placeholder="Address"
-          value={data["address"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="country"
-          placeholder="Country"
-          value={data["country"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="contact"
-          placeholder="Mobile Number"
-          value={data["contact"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="email"
-          placeholder="Email ID"
-          value={data["email"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          value={data["password"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="confPassword"
-          type="password"
-          placeholder="Confirm Password"
-          value={data["confPassword"]}
-          onChange={handleChange}
-        ></input>
-        <button onClick={signUp}>Next</button>
-        <p>
-          Already use Uber?
-          <span onClick={() => loginTab()}> Sign in</span>
-        </p>
+        <Form>
+          <Form.Group className="mb-8">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control
+              id="firstName"
+              placeholder="First Name"
+              value={data["firstName"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-8">
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control
+              id="lastName"
+              placeholder="Last Name"
+              value={data["lastName"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-8">
+            <Form.Label>User Name</Form.Label>
+            <Form.Control
+              id="user"
+              placeholder="User Name"
+              value={data["user"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-8">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              id="address"
+              placeholder="Address"
+              value={data["address"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-8">
+            <Form.Label>Country</Form.Label>
+            <Form.Control
+              id="country"
+              placeholder="Country"
+              value={data["country"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-8">
+            <Form.Label>Mobile Number</Form.Label>
+            <Form.Control
+              id="contact"
+              placeholder="Mobile Number"
+              value={data["contact"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-8" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              id="email"
+              placeholder="Email ID"
+              value={data["email"]}
+              onChange={handleChange}
+              type="email"
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={data["password"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formFileSm" className="mb-3">
+            <Form.Label>Profile Picture</Form.Label>
+            <Form.Control type="file" size="sm" />
+          </Form.Group>
+          <Button variant="primary" type="submit" onClick={signUp}>
+            Next
+          </Button>
+          <Form.Group controlId="formFileSm" className="mb-3 bottomGroup">
+            <p>
+              Already user?
+              <span onClick={() => loginTab()}> Sign in</span>
+            </p>
+          </Form.Group>
+        </Form>
       </div>
     </div>
   );
