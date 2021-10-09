@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   OrderItem.associate = (models) => {
-    OrderItem.belongsTo(models.Customer, {
+    OrderItem.belongsTo(models.Dishes, {
       foreignKey: {
         allowNull: false,
       },

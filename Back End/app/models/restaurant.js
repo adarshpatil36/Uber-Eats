@@ -38,5 +38,13 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
+  Restaurant.associate = (models) => {
+    Restaurant.belongsTo(models.Dishes, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
+
   return Restaurant;
 };
