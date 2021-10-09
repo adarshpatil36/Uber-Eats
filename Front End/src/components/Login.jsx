@@ -11,6 +11,7 @@ import FooterCard from "./FooterCard";
 export const Login = ({ changeActiveTab, loginUser }) => {
   const [uname, setUname] = useState("");
   const [password, setPassword] = useState("");
+  const [isResSignIn, setIsResSignIn] = useState(false);
 
   let history = useHistory();
 
@@ -22,6 +23,16 @@ export const Login = ({ changeActiveTab, loginUser }) => {
   const registerRestaurant = () => {
     changeActiveTab(CONSTANTS.RESTAURANT_SIGNUP);
     history.push("/signup");
+  };
+
+  const restaurantSignIn = () => {
+    changeActiveTab(CONSTANTS.RESTAURANT_SIGNIN);
+    setIsResSignIn(true);
+  };
+
+  const userSignIn = () => {
+    changeActiveTab(CONSTANTS.CUSTOMER_SIGNIN);
+    setIsResSignIn(false);
   };
 
   const handleChange = (e) => {
@@ -58,10 +69,17 @@ export const Login = ({ changeActiveTab, loginUser }) => {
       <Logo />
       <div className="loginTab">
         <h5>Welcome Back {loginUser} </h5>
-        <span>Sign in with your user name or email address.</span>
+        {isResSignIn ? (
+          <span>Sign in with your user name or email address.</span>
+        ) : (
+          <span>Sign in with your Restaurant name or email address.</span>
+        )}
+
         <input
           id="uname"
-          placeholder="User Name / Email / Restaurant ID"
+          placeholder={
+            isResSignIn ? "Restaurant ID /Email " : "User Name / Email"
+          }
           onChange={handleChange}
         ></input>
         <>
@@ -74,6 +92,17 @@ export const Login = ({ changeActiveTab, loginUser }) => {
           {/* {<span className="errorMessage"> Invalid Credentials </span>} */}
         </>
         <button onClick={login}>Next</button>
+        {isResSignIn ? (
+          <p>
+            Sign In with User
+            <span onClick={() => userSignIn()}> User Sign-In</span>
+          </p>
+        ) : (
+          <p>
+            Sign In with restaurant
+            <span onClick={() => restaurantSignIn()}> Restaurant Sign-In</span>
+          </p>
+        )}
         <p>
           New to Uber?
           <span onClick={() => signUpTab()}> Create an account</span>

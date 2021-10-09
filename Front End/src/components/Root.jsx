@@ -17,6 +17,7 @@ const Root = () => {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/login" component={Login} />
+        {/* <Route path="/signin" component={Login} /> */}
         <Route path="/signup" component={Signup} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/restaurant" component={Restaurant} />
