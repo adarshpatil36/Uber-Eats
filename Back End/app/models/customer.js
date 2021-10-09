@@ -29,5 +29,11 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
+  Customer.associate = (models) => {
+    Customer.hasMany(models.Orders, {
+      onDelete: "cascade",
+    });
+  };
+
   return Customer;
 };

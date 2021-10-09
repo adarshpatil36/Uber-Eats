@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Orders = sequelize.define("dishes", {
+  const Orders = sequelize.define("order", {
     dishes: {
       type: Sequelize.STRING,
     },
@@ -14,9 +14,19 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
-  // Orders.associate = models => {
-  //     Orders.
-  // }
+  Orders.associate = (models) => {
+    Orders.belongsTo(models.Customer, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+
+    Orders.hasMany(models.Dishes, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
   return Orders;
 };

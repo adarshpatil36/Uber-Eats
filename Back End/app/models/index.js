@@ -23,5 +23,6 @@ db.customer = require("./customer.js")(sequelize, Sequelize);
 db.restaurant = require("./restaurant.js")(sequelize, Sequelize);
 db.order = require("./order")(sequelize, Sequelize);
 db.dishes = require("./dishes")(sequelize, Sequelize);
+db.dishes = require("./orderItem")(sequelize, Sequelize);
 
 module.exports = db;
