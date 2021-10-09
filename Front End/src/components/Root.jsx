@@ -4,13 +4,10 @@ import { Dashboard } from "./Dashboard";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Restaurant from "./Restaurant";
 import OrderItem from "./OrderItem";
-import Toast from "./ToastCard";
 import { PastOrders } from "./PastOrders";
-import RestaurantDetails from "./RestaurantDetails";
-import Form from "./InfoForms";
 import InfoForms from "./InfoForms";
 import CustomerSignup from "./CustomerSignup";
-import { RestaurantSignup } from "./RestaurantSignup";
+import RestaurantSignup from "./RestaurantSignup";
 
 const Root = () => {
   return (

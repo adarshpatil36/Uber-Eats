@@ -7,16 +7,17 @@ import { CONSTANTS } from "../constants/constants";
 import { useHistory } from "react-router";
 import axios from "axios";
 
-export const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
+const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
   const [data, setData] = useState({
-    fname: "",
-    lname: "",
-    uname: "",
+    name: "",
+    description: "",
+    timings: "",
     address: "",
+    country: "",
+    contact: "",
     email: "",
     password: "",
     confPassword: "",
-    contact: "",
   });
   let history = useHistory();
 
@@ -31,15 +32,17 @@ export const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
   const signUp = async () => {
     const { confPassword, ...postData } = data;
     postData["isRestaurant"] = true;
-    await axios.post("http://localhost:8080/users", postData).then((res) => {
-      if (res.status === 200) {
-        loginUser(postData);
-        changeActiveTab(CONSTANTS.DASHBOARD);
-        history.push("/dashboard");
-      } else {
-        console.log("Data post failed ");
-      }
-    });
+    await axios
+      .post("http://localhost:8080/restaurant", postData)
+      .then((res) => {
+        if (res.status === 200) {
+          loginUser(postData);
+          changeActiveTab(CONSTANTS.DASHBOARD);
+          history.push("/dashboard");
+        } else {
+          console.log("Data post failed ");
+        }
+      });
   };
 
   return (
@@ -48,27 +51,33 @@ export const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
       <div className="loginTab">
         <h5>Let's start with restaurant details </h5>
         <input
-          id="fname"
-          placeholder="Owner First Name"
-          value={data["fname"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="lname"
-          placeholder="Owner Last Name"
-          value={data["lname"]}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="uname"
+          id="name"
           placeholder="Restaurant Name"
-          value={data["uname"]}
+          value={data["name"]}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="description"
+          placeholder="Description"
+          value={data["description"]}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="timings"
+          placeholder="Timings"
+          value={data["timings"]}
           onChange={handleChange}
         ></input>
         <input
           id="address"
           placeholder="Address"
           value={data["address"]}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="country"
+          placeholder="Country"
+          value={data["country"]}
           onChange={handleChange}
         ></input>
         <input

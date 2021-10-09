@@ -7,7 +7,7 @@ exports.create = (req, res) => {
   console.log("In create func", req.body);
 
   // Validate request
-  if (!req.body.user) {
+  if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
