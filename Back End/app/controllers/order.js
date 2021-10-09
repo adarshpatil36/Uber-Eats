@@ -4,7 +4,7 @@ const OrderItem = db.orderItem;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
   console.log("In create func", req.body);
 
   // Validate request
@@ -23,14 +23,12 @@ exports.create = (req, res) => {
     OrderTime: req.body.OrderTime,
   };
 
-  const orderItem = {
-    dishes: req.body.dishes,
-    quantity: req.body.quantity,
-  };
+  const orderItem = req.body.orderItems;
 
-  Order.create(order)
+  const orderData = await Order.create(order)
     .then((data) => {
       res.send(data);
+      return data;
     })
     .catch((err) => {
       res.status(500).send({
@@ -38,7 +36,17 @@ exports.create = (req, res) => {
       });
     });
 
-  OrderItem.create(orderItem)
+  console.log("OrderItems ", orderItem);
+  console.log("\norderData ", orderData);
+
+  orderItems = orderItem.map((item) => {
+    let orderId = orderData.id;
+    return { orderId: orderId, ...item };
+  });
+
+  console.log("Updated OrderItems ", orderItems);
+
+  OrderItem.bulkCreate(orderItems)
     .then((data) => {
       res.send(data);
     })

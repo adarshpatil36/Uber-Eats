@@ -1,49 +1,49 @@
-const db = require("../models");
-const OrderItem = db.orderItem;
-const Op = db.Sequelize.Op;
+// const db = require("../models");
+// const OrderItem = db.orderItem;
+// const Op = db.Sequelize.Op;
 
-// Create and Save a new Tutorial
-exports.create = (req, res) => {
-  console.log("In create func", req.body);
+// // Create and Save a new Tutorial
+// exports.create = (req, res) => {
+//   console.log("In create func", req.body);
 
-  // Validate request
-  if (!req.body.user) {
-    res.status(400).send({
-      message: "Content can not be empty!",
-    });
-    return;
-  }
+//   // Validate request
+//   if (!req.body.user) {
+//     res.status(400).send({
+//       message: "Content can not be empty!",
+//     });
+//     return;
+//   }
 
-  const orderItem = {
-    dishes: req.body.dishes,
-    quantity: req.body.quantity,
-  };
+//   const orderItem = {
+//     dishes: req.body.dishes,
+//     quantity: req.body.quantity,
+//   };
 
-  OrderItem.create(orderItem)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the Order.",
-      });
-    });
-};
+//   OrderItem.create(orderItem)
+//     .then((data) => {
+//       res.send(data);
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: err.message || "Some error occurred while creating the Order.",
+//       });
+//     });
+// };
 
-// Retrieve all Orders from the database.
-exports.findAll = (req, res) => {};
+// // Retrieve all Orders from the database.
+// exports.findAll = (req, res) => {};
 
-// Find a single Tutorial with an id
-exports.findOne = (req, res) => {};
+// // Find a single Tutorial with an id
+// exports.findOne = (req, res) => {};
 
-// Update a Tutorial by the id in the request
-exports.update = (req, res) => {};
+// // Update a Tutorial by the id in the request
+// exports.update = (req, res) => {};
 
-// Delete a Tutorial with the specified id in the request
-exports.delete = (req, res) => {};
+// // Delete a Tutorial with the specified id in the request
+// exports.delete = (req, res) => {};
 
-// Delete all Tutorials from the database.
-exports.deleteAll = (req, res) => {};
+// // Delete all Tutorials from the database.
+// exports.deleteAll = (req, res) => {};
 
-// Find all published Tutorials
-exports.findAllPublished = (req, res) => {};
+// // Find all published Tutorials
+// exports.findAllPublished = (req, res) => {};

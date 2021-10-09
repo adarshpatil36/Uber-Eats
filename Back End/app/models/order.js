@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
     totalAmount: {
       type: Sequelize.DECIMAL(10, 2),
     },
-    OrderTime: {
+    orderTime: {
       type: Sequelize.STRING,
     },
   });
