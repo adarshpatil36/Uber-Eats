@@ -51,7 +51,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
 
   const login = () => {
     const data = { uname, password };
-    axios.post("http://localhost:8080/login", data).then((res) => {
+    axios.post("http://localhost:8080/user/login", data).then((res) => {
       if (res.status === 200) {
         const postData = { ...res["data"] };
         localStorage.setItem("token", JSON.stringify(postData["token"]));
@@ -90,7 +90,9 @@ export const Login = ({ changeActiveTab, loginUser }) => {
           onChange={handleChange}
         ></input>
 
-        <button onClick={login}>Next</button>
+        <button onClick={login} id="loginButton">
+          Next
+        </button>
         {isResSignIn ? (
           <p>
             Sign In with User

@@ -5,14 +5,13 @@ var router = require("express").Router();
 // Create a new Tutorial
 router.post("/", customer.create);
 
+router.post("/login", customer.findOne);
+
 // Retrieve all Tutorials
 router.get("/", customer.findAll);
 
 // Retrieve all published Tutorials
 router.get("/published", customer.findAllPublished);
-
-// Retrieve a single Tutorial with id
-router.get("/:user", customer.findOne);
 
 // Update a Tutorial with id
 router.put("/:id", customer.update);

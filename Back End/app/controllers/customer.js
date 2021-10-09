@@ -45,16 +45,25 @@ exports.findAll = (req, res) => {};
 // Find a single Tutorial with an id
 
 exports.findOne = (req, res) => {
-  const user = req.params.user;
-
+  const user = req.body.user;
+  const password = req.body.password;
   Customer.findOne({
     where: {
-      user: user,
+      password: password,
+      [Op.or]: [
+        {
+          user: user,
+        },
+        {
+          email: user,
+        },
+      ],
     },
   })
     .then((data) => {
       if (data) {
-        res.send(data);
+        const { password, ...postData } = data.dataValues;
+        res.send(postData);
       } else {
         res.status(404).send({
           message: `Cannot find Tutorial with id=${id}.`,

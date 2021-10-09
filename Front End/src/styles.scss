@@ -17,6 +17,10 @@ $title-font-weight: 700;
   flex-direction: column;
   align-items: center;
 
+  #loginButton{
+    width: 100%;
+  }
+
   img {
     margin: 50px;
     height: 32px;
