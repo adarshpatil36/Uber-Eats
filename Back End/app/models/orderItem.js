@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const OrderItem = sequelize.define("orderItem", {
-    dishe: {
+    dishes: {
       type: Sequelize.STRING,
     },
     quantity: {

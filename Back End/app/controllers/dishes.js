@@ -1,6 +1,5 @@
 const db = require("../models");
-const Order = db.order;
-const OrderItem = db.orderItem;
+const Dishes = db.dishes;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -8,37 +7,24 @@ exports.create = (req, res) => {
   console.log("In create func", req.body);
 
   // Validate request
-  if (!req.body.restid) {
+  if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
     return;
   }
 
-  const order = {
-    restid: req.body.restid,
-    userid: req.body.userid,
-    deliveryAddress: req.body.deliveryAddress,
-    totalAmount: req.body.totalAmount,
-    OrderTime: req.body.OrderTime,
+  const dishes = {
+    name: req.body.name,
+    description: req.body.description,
+    timings: req.body.timings,
+    price: req.body.price,
+    rating: req.body.rating,
+    imageURL: req.body.imageURL,
+    restaurant: req.body.restaurant,
   };
 
-  const orderItem = {
-    dishes: req.body.dishes,
-    quantity: req.body.quantity,
-  };
-
-  Order.create(order)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the Order.",
-      });
-    });
-
-  OrderItem.create(orderItem)
+  Dishes.create(dishes)
     .then((data) => {
       res.send(data);
     })

@@ -1,14 +1,14 @@
-const restaurant = require("../controllers/order");
+const order = require("../controllers/order");
 
 var router = require("express").Router();
 
 // Create a new Tutorial
-router.post("/", restaurant.create);
+router.post("/", order.create);
 
 // Retrieve all Tutorials
-router.get("/", restaurant.findAll);
+router.get("/", order.findAll);
 
 // Update a Tutorial with id
-router.put("/:id", restaurant.update);
+router.put("/:id", order.update);
 
 module.exports = router;
