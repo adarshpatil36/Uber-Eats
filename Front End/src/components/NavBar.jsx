@@ -21,36 +21,40 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
     history.push("/dashboard");
   };
 
-  return (
-    userData && (
-      <div className="NavBar">
-        <Logo redirectToDashboard={redirectToDashboard} />
-        <input placeholder="Mode"></input>
-        <input placeholder="Address"></input>
-        <input placeholder="What are your cravings?" type="search"></input>
-        <span className="loginIcon">
-          {userData?.isRestaurant?.toString() === "true" ? (
-            <div>
-              <img
-                src="https://us.123rf.com/450wm/friendesigns/friendesigns1902/friendesigns190200738/117794294-modern-kitchen-logo.jpg?ver=6"
-                alt="res logo"
-              />
-              <span>{userData.name || userData.user}</span>
-            </div>
-          ) : (
-            <div>
-              <img
-                src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
-                alt="user logo"
-              />
-              <span>{userData.name || userData.user}</span>
-            </div>
-          )}
-          <button onClick={redirectToOrder}>My Orders</button>
-          <button onClick={onLogout}>Logout</button>
-        </span>
-      </div>
-    )
+  return userData ? (
+    <div className="NavBar">
+      <Logo navigateTo={redirectToDashboard} />
+      {window.location.href.includes("dashboard") && (
+        <>
+          <input placeholder="Mode"></input>
+          <input placeholder="Address"></input>
+          <input placeholder="What are your cravings?" type="search"></input>
+        </>
+      )}
+      <span className="loginIcon">
+        {userData?.isRestaurant?.toString() === "true" ? (
+          <div>
+            <img
+              src="https://us.123rf.com/450wm/friendesigns/friendesigns1902/friendesigns190200738/117794294-modern-kitchen-logo.jpg?ver=6"
+              alt="res logo"
+            />
+            <span>{userData.name || userData.user}</span>
+          </div>
+        ) : (
+          <div>
+            <img
+              src="https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg"
+              alt="user logo"
+            />
+            <span>{userData.name || userData.user}</span>
+          </div>
+        )}
+        <button onClick={redirectToOrder}>My Orders</button>
+        <button onClick={onLogout}>Logout</button>
+      </span>
+    </div>
+  ) : (
+    <></>
   );
 };
 

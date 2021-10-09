@@ -119,7 +119,8 @@ export const Login = ({ changeActiveTab, loginUser }) => {
 };
 
 Login.propTypes = {
-  props: PropTypes,
+  changeActiveTab: PropTypes.func,
+  loginUser: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {

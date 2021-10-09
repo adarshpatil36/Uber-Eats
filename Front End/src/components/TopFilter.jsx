@@ -3,22 +3,19 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { URLS } from "../constants/api";
 
-export const TopFilter = (props) => {
+export const TopFilter = () => {
   return (
     <div className="topFilter">
-      {URLS.TOP_FILTER.map((item) => {
-        return <img src={item} alt="" onClick={() => alert("Hello")}></img>;
+      {URLS.TOP_FILTER.map((item, index) => {
+        return (
+          <img
+            src={item}
+            alt=""
+            key={index}
+            onClick={() => alert("Functionality in progress")}
+          ></img>
+        );
       })}
     </div>
   );
 };
-
-TopFilter.propTypes = {
-  props: PropTypes,
-};
-
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TopFilter);

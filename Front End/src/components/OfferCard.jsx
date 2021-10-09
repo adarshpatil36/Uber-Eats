@@ -7,7 +7,13 @@ export const OfferCard = (props) => {
   return (
     <div className="offerCard">
       {URLS.OFER_CARDS.map((item) => {
-        return <img src={item} alt="" onClick={() => alert("Hello")}></img>;
+        return (
+          <img
+            src={item}
+            alt=""
+            onClick={() => alert("Functionality in progress")}
+          ></img>
+        );
       })}
     </div>
   );

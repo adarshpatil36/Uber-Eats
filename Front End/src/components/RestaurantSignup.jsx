@@ -18,7 +18,6 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
     contact: "",
     email: "",
     password: "",
-    confPassword: "",
   });
   let history = useHistory();
 
@@ -32,18 +31,31 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
 
   const signUp = async () => {
     const { confPassword, ...postData } = data;
-    postData["isRestaurant"] = true;
-    await axios
-      .post("http://localhost:8080/restaurant", postData)
-      .then((res) => {
-        if (res.status === 200) {
-          loginUser(postData);
-          changeActiveTab(CONSTANTS.DASHBOARD);
-          history.push("/dashboard");
-        } else {
-          console.log("Data post failed ");
-        }
-      });
+
+    if (
+      data.name &&
+      data.description &&
+      data.timings &&
+      data.address &&
+      data.country &&
+      data.contact &&
+      data.email &&
+      data.password
+    ) {
+      postData["isRestaurant"] = true;
+      await axios
+        .post("http://localhost:8080/restaurant", postData)
+        .then((res) => {
+          console.log(">>>", res);
+          if (res.status === 200) {
+            loginUser(postData);
+            changeActiveTab(CONSTANTS.DASHBOARD);
+            history.push("/dashboard");
+          } else {
+            console.log("Data post failed ");
+          }
+        });
+    }
   };
   const redirectToLogin = () => {
     history.push("/login");
@@ -67,17 +79,6 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-8">
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control
-              id="lastName"
-              placeholder="Last Name"
-              value={data["lastName"]}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Restaurant Description</Form.Label>
             <Form.Control
@@ -85,6 +86,7 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
               rows={3}
               id="description"
               placeholder="Description"
+              required
               value={data["description"]}
               onChange={handleChange}
             />
@@ -162,7 +164,7 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
             <Form.Label>Profile Picture</Form.Label>
             <Form.Control type="file" size="sm" />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={signUp}>
+          <Button variant="primary" onClick={signUp}>
             Next
           </Button>
           <Form.Group controlId="formFileSm" className="mb-3 bottomGroup">

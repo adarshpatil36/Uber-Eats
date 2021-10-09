@@ -17,7 +17,6 @@ const CustomerSignup = ({ changeActiveTab, loginUser }) => {
     address: "",
     email: "",
     password: "",
-    confPassword: "",
     contact: "",
     country: "",
   });
@@ -147,7 +146,7 @@ const CustomerSignup = ({ changeActiveTab, loginUser }) => {
             <Form.Label>Profile Picture</Form.Label>
             <Form.Control type="file" size="sm" />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={signUp}>
+          <Button variant="primary" onClick={signUp}>
             Next
           </Button>
           <Form.Group controlId="formFileSm" className="mb-3 bottomGroup">
