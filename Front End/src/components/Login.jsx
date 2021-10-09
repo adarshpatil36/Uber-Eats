@@ -17,12 +17,12 @@ export const Login = ({ changeActiveTab, loginUser }) => {
 
   const signUpTab = () => {
     changeActiveTab(CONSTANTS.CUSTOMER_SIGNUP);
-    history.push("/signup");
+    history.push("/userSignup");
   };
 
   const registerRestaurant = () => {
     changeActiveTab(CONSTANTS.RESTAURANT_SIGNUP);
-    history.push("/signup");
+    history.push("/resSignup");
   };
 
   const restaurantSignIn = () => {
@@ -78,7 +78,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
         <input
           id="uname"
           placeholder={
-            isResSignIn ? "Restaurant ID /Email " : "User Name / Email"
+            isResSignIn ? "Restaurant ID / Email " : "User Name / Email"
           }
           onChange={handleChange}
         ></input>

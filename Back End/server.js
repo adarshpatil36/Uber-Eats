@@ -59,7 +59,7 @@
 
 // // con.query(
 // //   `INSERT into customer (firstName,lastName,user,
-// //     email, password, city, state, country, dob, mob) values ('new jarvis', 'jarvis', 'jarvis', 'jarvis@gmail.com','Qwerty@123','jarvis','jarvis','jarvis','jarvis','jarvis');
+// //     email, password, city, state, country, dob, contact) values ('new jarvis', 'jarvis', 'jarvis', 'jarvis@gmail.com','Qwerty@123','jarvis','jarvis','jarvis','jarvis','jarvis');
 // // `,
 // //   (err, rows) => {
 // //     if (err) throw err;
@@ -82,11 +82,11 @@
 
 // app.post("/adduser", function (request, reponse) {
 //   console.log("Data received", request.body);
-//   const { fname, lname, uname, email, password, mob, address, isRestaurant } =
+//   const { fname, lname, uname, email, password, contact, address, isRestaurant } =
 //     request.body;
 //   con.query(
 //     `INSERT into customer (firstName,lastName,user,
-//       email, password, mob, address, isRestaurant) values ( '${fname}','${lname}','${uname}','${email}','${password}','${mob}','${address}','${isRestaurant}');
+//       email, password, contact, address, isRestaurant) values ( '${fname}','${lname}','${uname}','${email}','${password}','${contact}','${address}','${isRestaurant}');
 //   `,
 //     (err, rows) => {
 //       if (err) throw err;
@@ -171,10 +171,10 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 const db = require("./app/models");
-// db.sequelize.sync();
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
+db.sequelize.sync();
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 
 // parse requests of content-type - application/json
 app.use(express.json());

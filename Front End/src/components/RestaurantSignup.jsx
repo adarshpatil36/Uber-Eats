@@ -1,9 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Logo from "./Logo";
+import { ACTION_TYPE } from "../actions/ActionTypes";
+import { CONSTANTS } from "../constants/constants";
+import { useHistory } from "react-router";
+import axios from "axios";
 
-export const RestaurantSignup = ({ loginTab, data, handleChange, signUp }) => {
+export const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
+  const [data, setData] = useState({
+    fname: "",
+    lname: "",
+    uname: "",
+    address: "",
+    email: "",
+    password: "",
+    confPassword: "",
+    contact: "",
+  });
+  let history = useHistory();
+
+  const loginTab = () => {
+    history.push("./login");
+  };
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setData({ ...data, [id]: value });
+  };
+
+  const signUp = async () => {
+    const { confPassword, ...postData } = data;
+    postData["isRestaurant"] = true;
+    await axios.post("http://localhost:8080/users", postData).then((res) => {
+      if (res.status === 200) {
+        loginUser(postData);
+        changeActiveTab(CONSTANTS.DASHBOARD);
+        history.push("/dashboard");
+      } else {
+        console.log("Data post failed ");
+      }
+    });
+  };
+
   return (
     <div className="login">
       <Logo />
@@ -34,9 +72,9 @@ export const RestaurantSignup = ({ loginTab, data, handleChange, signUp }) => {
           onChange={handleChange}
         ></input>
         <input
-          id="mob"
+          id="contact"
           placeholder="Mobile Number"
-          value={data["mob"]}
+          value={data["contact"]}
           onChange={handleChange}
         ></input>
         <input
@@ -73,8 +111,18 @@ RestaurantSignup.propTypes = {
   props: PropTypes,
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  activeTab: state.data.activeTab,
+  isRestaurant: state.data.activeTab === CONSTANTS.RESTAURANT_SIGNUP,
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeActiveTab: (tabID) =>
+      dispatch({ type: ACTION_TYPE.SET_ACTIVE_TAB, value: tabID }),
+    loginUser: (data) =>
+      dispatch({ type: ACTION_TYPE.SET_LOGIN_DATA, value: data }),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantSignup);
