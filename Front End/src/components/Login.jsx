@@ -82,15 +82,14 @@ export const Login = ({ changeActiveTab, loginUser }) => {
           }
           onChange={handleChange}
         ></input>
-        <>
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-          ></input>
-          {/* {<span className="errorMessage"> Invalid Credentials </span>} */}
-        </>
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+        ></input>
+
         <button onClick={login}>Next</button>
         {isResSignIn ? (
           <p>
