@@ -70,9 +70,9 @@ export const Login = ({ changeActiveTab, loginUser }) => {
       <div className="loginTab">
         <h5>Welcome Back {loginUser} </h5>
         {isResSignIn ? (
-          <span>Sign in with your user name or email address.</span>
-        ) : (
           <span>Sign in with your Restaurant name or email address.</span>
+        ) : (
+          <span>Sign in with your user name or email address.</span>
         )}
 
         <input

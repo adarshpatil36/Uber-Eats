@@ -10,14 +10,15 @@ import { connect } from "react-redux";
 
 const CustomerSignup = ({ changeActiveTab, loginUser }) => {
   const [data, setData] = useState({
-    fname: "",
-    lname: "",
-    uname: "",
+    firstName: "",
+    lastName: "",
+    user: "",
     address: "",
     email: "",
     password: "",
     confPassword: "",
     contact: "",
+    country: "",
   });
   let history = useHistory();
 
@@ -48,15 +49,15 @@ const CustomerSignup = ({ changeActiveTab, loginUser }) => {
       <div className="loginTab">
         <h5>Let's get started </h5>
         <input
-          id="fname"
+          id="firstName"
           placeholder="First Name"
-          value={data["fname"]}
+          value={data["firstName"]}
           onChange={handleChange}
         ></input>
         <input
-          id="lname"
+          id="lastName"
           placeholder="Last Name"
-          value={data["lname"]}
+          value={data["lastName"]}
           onChange={handleChange}
         ></input>
         <input
@@ -69,6 +70,12 @@ const CustomerSignup = ({ changeActiveTab, loginUser }) => {
           id="address"
           placeholder="Address"
           value={data["address"]}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="country"
+          placeholder="Country"
+          value={data["country"]}
           onChange={handleChange}
         ></input>
         <input
