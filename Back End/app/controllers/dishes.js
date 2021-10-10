@@ -7,7 +7,7 @@ exports.create = (req, res) => {
   console.log("In create func", req.body);
 
   // Validate request
-  if (!req.body.name) {
+  if (!req.body.restaurantId) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
@@ -20,7 +20,7 @@ exports.create = (req, res) => {
     price: req.body.price,
     rating: req.body.rating,
     imageURL: req.body.imageURL,
-    restaurant: req.body.restaurant,
+    restaurantId: req.body.restaurantId,
   };
 
   Dishes.create(dishes)

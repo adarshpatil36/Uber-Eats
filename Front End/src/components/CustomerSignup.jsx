@@ -34,6 +34,7 @@ const CustomerSignup = ({ changeActiveTab, loginUser }) => {
     const { confPassword, ...postData } = data;
     await axios.post("http://localhost:8080/users", postData).then((res) => {
       if (res.status === 200) {
+        postData["id"] = res.data.id;
         loginUser(postData);
         changeActiveTab(CONSTANTS.DASHBOARD);
         history.push("/dashboard");

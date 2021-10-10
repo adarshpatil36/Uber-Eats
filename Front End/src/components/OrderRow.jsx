@@ -1,12 +1,18 @@
 import React from "react";
-
+import { DropdownButton, Dropdown } from "react-bootstrap";
 export default function OrderRow({
   quantityCount,
   selectedRestaurant,
   selectedDishes,
   totalAmount,
-  showToast,
+  placeOrder,
+  address,
+  setselectedAddress,
+  selectedAddress,
 }) {
+  const onChangeDropdown = (item) => {
+    setselectedAddress(item);
+  };
   return (
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
@@ -50,11 +56,27 @@ export default function OrderRow({
               <div class="order_total_amount">${totalAmount}</div>
             </div>
           </div>
+
+          <div>
+            <div className="cart_item_text">Address</div>
+            <DropdownButton id="dropdown-basic-button" title="Select Address">
+              {address.length > 0 &&
+                address.map((item) => (
+                  <Dropdown.Item
+                    id={item.id}
+                    onClick={() => onChangeDropdown(item)}
+                  >
+                    {item.type}
+                  </Dropdown.Item>
+                ))}
+            </DropdownButton>
+          </div>
+          <p>{selectedAddress?.address}</p>
           <div class="cart_buttons">
             <button
               type="button"
               class="button cart_button_checkout"
-              onClick={showToast}
+              onClick={placeOrder}
             >
               Place Order
             </button>

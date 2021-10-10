@@ -7,16 +7,49 @@ import { useHistory } from "react-router";
 import { ENV } from "../config";
 import axios from "axios";
 import InfoModal from "./InfoModal";
+import AddDishModal from "./AddDishModal";
 
 const RestaurantDashboard = ({ restData }) => {
   const [data, setData] = useState({ ...restData });
   const [dishes, setDishes] = useState([]);
+  const [newDish, setnewDish] = useState({
+    name: "",
+    description: "",
+    price: 0,
+    imageURL:
+      "https://d1ralsognjng37.cloudfront.net/7a644bda-66da-43d5-8fb3-356f0b171e3e.jpeg",
+    restaurantId: 0,
+    rating: 3,
+  });
 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showDish, setShowDish] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleDishClose = () => setShowDish(false);
+
+  const handleNewDish = (e) => {
+    const { id, value } = e.target;
+    setnewDish({ ...newDish, [id]: value });
+  };
+
+  const saveNewDish = () => {
+    const postData = { ...newDish, restaurantId: restData.id };
+    axios.post("http://localhost:8080/dishes", postData).then(() => {
+      setShowDish(false);
+      setnewDish({
+        name: "",
+        description: "",
+        price: 0,
+        imageURL:
+          "https://d1ralsognjng37.cloudfront.net/7a644bda-66da-43d5-8fb3-356f0b171e3e.jpeg",
+        restaurantId: 0,
+        rating: 3,
+      });
+      console.log("Posted succesfully");
+    });
+  };
   const handleChange = (e) => {
     const { id, value } = e.target;
     setData({ ...data, [id]: value });
@@ -44,6 +77,9 @@ const RestaurantDashboard = ({ restData }) => {
     const dish = dishes.find((item) => item.id == dId);
     dish[id] = value;
     setDishes([...dishes]);
+  };
+  const addDish = () => {
+    setShowDish(true);
   };
 
   const updateDishes = (e, dId) => {
@@ -163,6 +199,9 @@ const RestaurantDashboard = ({ restData }) => {
       <br />
       <div className="dishesDashboard">
         <span>Dishes</span>
+        <Button variant="primary" onClick={addDish}>
+          Add Dish
+        </Button>
       </div>
       {dishes?.length > 0 &&
         dishes.map((item) => (
@@ -220,11 +259,14 @@ const RestaurantDashboard = ({ restData }) => {
             </Button>
           </Form>
         ))}
-      <InfoModal
-        handleClose={handleClose}
-        handleShow={handleShow}
-        show={show}
-      ></InfoModal>
+      <InfoModal handleClose={handleClose} show={show}></InfoModal>
+      <AddDishModal
+        show={showDish}
+        handleClose={handleDishClose}
+        handleNewDish={handleNewDish}
+        newDish={newDish}
+        saveNewDish={saveNewDish}
+      />
     </div>
   );
 };

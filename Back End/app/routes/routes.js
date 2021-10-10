@@ -3,4 +3,5 @@ module.exports = (app) => {
   app.use("/restaurant", require("./restaurant"));
   app.use("/order", require("./order"));
   app.use("/dishes", require("./dishes"));
+  app.use("/address", require("./address"));
 };

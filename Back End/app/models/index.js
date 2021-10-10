@@ -24,5 +24,6 @@ db.restaurant = require("./restaurant.js")(sequelize, Sequelize);
 db.order = require("./order")(sequelize, Sequelize);
 db.dishes = require("./dishes")(sequelize, Sequelize);
 db.orderItem = require("./orderItem")(sequelize, Sequelize);
+db.address = require("./address")(sequelize, Sequelize);
 
 module.exports = db;

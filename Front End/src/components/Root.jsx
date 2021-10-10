@@ -3,12 +3,12 @@ import Login from "./Login";
 import { Dashboard } from "./Dashboard";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Restaurant from "./Restaurant";
-import OrderItem from "./OrderItem";
 import { PastOrders } from "./PastOrders";
 import InfoForms from "./InfoForms";
 import CustomerSignup from "./CustomerSignup";
 import RestaurantSignup from "./RestaurantSignup";
 import RestaurantDashboard from "./RestaurantDashboard";
+import OrderItem from "./OrderItem";
 
 const Root = () => {
   return (
