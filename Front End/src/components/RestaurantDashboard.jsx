@@ -4,9 +4,19 @@ import { connect } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import NavBar from "./NavBar";
 import { useHistory } from "react-router";
+import { ENV } from "../config";
+import axios from "axios";
+import InfoModal from "./InfoModal";
 
 const RestaurantDashboard = ({ restData }) => {
-  const [data, setData] = useState({ restData });
+  const [data, setData] = useState({ ...restData });
+  const [dishes, setDishes] = useState([]);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setData({ ...data, [id]: value });
@@ -17,11 +27,42 @@ const RestaurantDashboard = ({ restData }) => {
   };
 
   useEffect(() => {
-    setData(restData);
-  }, [restData]);
+    getDishes();
+  }, []);
+  // useEffect(() => {
+  //   setData(restData);
+  // }, [restData]);
 
+  const getDishes = () => {
+    const restaurant = restData.name;
+    fetch(`${ENV.LOCAL_HOST}/dishes/${restaurant}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setDishes(data);
+        console.log(">>", data);
+      });
+  };
+  const handleDishChange = (e, dId) => {
+    const { id, value } = e.target;
+    const dish = dishes.find((item) => item.id == dId);
+    dish[id] = value;
+    setDishes([...dishes]);
+  };
+
+  const updateDishes = (e, dId) => {
+    const dish = dishes.find((item) => item.id === dId);
+    axios.post("http://localhost:8080/dishes/updateDish", dish).then((res) => {
+      if (res.status === 200) {
+        setShow(true);
+        // alert("Dish updated succesfully");
+        console.log("Successfully posted data");
+      }
+    });
+
+    console.log(dishes);
+  };
   return (
-    <div>
+    <div className="RestaurantDashboard">
       <NavBar navigateTo={redirectToDashboard} />
       <Form>
         <Form.Group className="mb-8">
@@ -120,16 +161,73 @@ const RestaurantDashboard = ({ restData }) => {
           <Form.Label>Profile Picture</Form.Label>
           <Form.Control type="file" size="sm" />
         </Form.Group>
-        {/* <Button variant="primary" onClick={signUp}>
-          Next
-        </Button> */}
-        <Form.Group controlId="formFileSm" className="mb-3 bottomGroup">
-          <p>
-            Already registered on Uber?
-            {/* <span onClick={() => loginTab()}> Sign in</span> */}
-          </p>
-        </Form.Group>
+        <Button variant="primary">Update Data</Button>
       </Form>
+      <br />
+      <div className="dishesDashboard">
+        <span>Dishes</span>
+      </div>
+      {dishes?.length > 0 &&
+        dishes.map((item) => (
+          <Form>
+            <Form.Group className="mb-8">
+              <Form.Label>Dish Name</Form.Label>
+              <Form.Control
+                id="name"
+                placeholder="Restaurant Name"
+                value={item.name}
+                onChange={(e) => handleDishChange(e, item.id)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Dish Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                id="description"
+                placeholder="Description"
+                required
+                value={item.description}
+                onChange={(e) => handleDishChange(e, item.id)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-8">
+              <Form.Label>Ratings</Form.Label>
+              <Form.Control
+                id="rating"
+                placeholder="Ratings"
+                value={item.rating}
+                onChange={(e) => handleDishChange(e, item.id)}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-8">
+              <Form.Label>Price</Form.Label>
+              <Form.Control
+                id="price"
+                placeholder="Price"
+                value={item.price}
+                onChange={(e) => handleDishChange(e, item.id)}
+                required
+              />
+            </Form.Group>
+            <Button variant="primary" onClick={(e) => updateDishes(e, item.id)}>
+              Update Dish
+            </Button>
+          </Form>
+        ))}
+      <InfoModal
+        handleClose={handleClose}
+        handleShow={handleShow}
+        show={show}
+      ></InfoModal>
     </div>
   );
 };

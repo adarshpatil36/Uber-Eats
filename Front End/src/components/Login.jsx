@@ -37,7 +37,6 @@ export const Login = ({ changeActiveTab, loginUser }) => {
   };
 
   const handleChange = (e) => {
-    console.log(e);
     switch (e.target.id) {
       case "uname":
         setUname(e.target.value);

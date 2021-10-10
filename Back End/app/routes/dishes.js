@@ -5,14 +5,14 @@ var router = require("express").Router();
 // Create a new Tutorial
 router.post("/", dishes.create);
 
+// router.post("/updateDish", dishes.bulkCreate);
+router.post("/updateDish", dishes.update);
+
 // Retrieve all Tutorials
-router.get("/", dishes.findAll);
+router.get("/:restaurant", dishes.findAll);
 
 // Retrieve all published Tutorials
 router.get("/published", dishes.findAllPublished);
-
-// Retrieve a single Tutorial with id
-router.get("/:id", dishes.findOne);
 
 // Update a Tutorial with id
 router.put("/:id", dishes.update);

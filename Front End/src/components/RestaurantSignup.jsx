@@ -46,7 +46,6 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
       await axios
         .post("http://localhost:8080/restaurant", postData)
         .then((res) => {
-          console.log(">>>", res);
           if (res.status === 200) {
             loginUser(postData);
             changeActiveTab(CONSTANTS.DASHBOARD);

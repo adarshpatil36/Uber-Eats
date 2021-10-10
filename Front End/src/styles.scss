@@ -191,6 +191,16 @@ img:hover {
   font-size: 15px;
   font-weight: 500;
 }
+.RestaurantDashboard{
+  width: 70%;
+}
+.dishesDashboard{
+  display: flex;
+  justify-content: space-between;
+  span{
+    font-size: 25px;
+  }
+}
 
 .Restaurant {
   .info {

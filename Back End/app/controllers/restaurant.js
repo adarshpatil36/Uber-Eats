@@ -58,7 +58,6 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const name = req.body.name;
   const password = req.body.password;
-  console.log(name, " ", password);
   Restaurant.findOne({
     where: {
       password: password,

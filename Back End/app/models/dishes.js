@@ -6,9 +6,9 @@ module.exports = (sequelize, Sequelize) => {
     description: {
       type: Sequelize.STRING,
     },
-    timings: {
-      type: Sequelize.STRING,
-    },
+    // timings: {
+    //   type: Sequelize.STRING,
+    // },
     price: {
       type: Sequelize.DECIMAL(10, 2),
     },
