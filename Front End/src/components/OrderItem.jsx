@@ -6,6 +6,7 @@ import { ACTION_TYPE } from "../actions/ActionTypes";
 import OrderRow from "./OrderRow";
 import NavBar from "./NavBar";
 import { ENV } from "../config";
+import axios from "axios";
 
 const OrderItem = ({
   restDishes,
@@ -39,18 +40,22 @@ const OrderItem = ({
 
   const placeOrder = () => {
     console.log("selectedDishes", selectedDishes);
-    //   const orderData  = {
-    //     "restid": selectedRestaurant.id,
-    //     "deliveryAddress": "Lasyusha99",
-    //     "userid":"Adaarsh253",
-    //     "totalAmount": "8999999",
-    //     "OrderTime": "989898999",
-    //     "orderItems":[{"dishId":"434","quantity":23},{"dishId":"788","quantity":2}],
-    //     "quantity":2
-    // }
+    const orderItems = selectedDishes.map((item) => ({
+      dishId: item.id,
+      quantity: item.quantity,
+    }));
+    const postData = {
+      restid: selectedRestaurant.id,
+      deliveryAddress: selectedAddress.address,
+      userid: userData.id,
+      totalAmount: totalAmount,
+      OrderTime: new Date(),
+      orderItems: orderItems,
+    };
 
-    //   "orderItems":[{"dishId":"434","quantity":23},{"dishId":"788","quantity":2}],
-    // axios.post('http://localhost:8080/order',selectedDishes)
+    axios
+      .post("http://localhost:8080/order", postData)
+      .then(() => console.log("Data posted successfully"));
     clearRestaurantData();
 
     history.push({ pathname: "/dashboard", state: "orderPlaced" });

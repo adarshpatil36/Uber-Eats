@@ -57,8 +57,32 @@ exports.create = async (req, res) => {
     });
 };
 
+const { QueryTypes } = require("sequelize");
+
 // Retrieve all Orders from the database.
-exports.findAll = (req, res) => {};
+exports.findAll = async (req, res) => {
+  const userId = req.params.userId;
+  console.log("UserID ", userId);
+  const users = await db.sequelize.query(
+    "SELECT * FROM restaurants INNER JOIN (SELECT dishId,	orderId,	quantity,restid,	userid,	deliveryAddress	,totalAmount,	orderTime FROM orderItems INNER JOIN orders ON orders.id=orderItems.orderId) AS A ON A.restid=restaurants.id",
+    {
+      type: QueryTypes.SELECT,
+    }
+  );
+  res.send(users);
+  // Order.findAll({
+  //   where: { userId: userId },
+  // })
+  //   .then((data) => {
+  //     res.send(data);
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).send({
+  //       message:
+  //         err.message || "Some error occurred while retrieving tutorials.",
+  //     });
+  //   });
+};
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {};

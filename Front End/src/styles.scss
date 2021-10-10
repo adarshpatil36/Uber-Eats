@@ -584,3 +584,13 @@ img:hover {
     padding: 8px;
   }
 }
+.postOrder{
+  display: flex;
+  justify-content: space-between;
+  button{
+
+    background-color: $primary-color;
+    color: $white-color;
+    border: 0px;
+  }
+  }

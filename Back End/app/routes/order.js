@@ -6,7 +6,7 @@ var router = require("express").Router();
 router.post("/", order.create);
 
 // Retrieve all Tutorials
-router.get("/", order.findAll);
+router.get("/:userId", order.findAll);
 
 // Update a Tutorial with id
 router.put("/:id", order.update);
