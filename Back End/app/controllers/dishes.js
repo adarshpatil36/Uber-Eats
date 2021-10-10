@@ -52,12 +52,11 @@ exports.bulkCreate = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  const restaurant = req.params.restaurant;
-  console.log(">> ", restaurant);
+  const restaurantId = req.params.restaurantId;
 
   Dishes.findAll({
     where: {
-      restaurant: restaurant,
+      restaurantId: restaurantId,
     },
   })
     .then((data) => {

@@ -66,12 +66,12 @@ export const Login = ({ changeActiveTab, loginUser }) => {
         }
       });
     } else {
-      const data = { uname, password };
+      const data = { user: uname, password };
       axios.post("http://localhost:8080/users/login", data).then((res) => {
         if (res.status === 200 && !res.data.message) {
           const postData = { ...res["data"] };
           localStorage.setItem("token", JSON.stringify(postData["token"]));
-          loginUser(postData["userData"][0]);
+          loginUser(postData);
           changeActiveTab(CONSTANTS.DASHBOARD);
           history.push("/dashboard");
         } else {

@@ -9,7 +9,7 @@ router.post("/", dishes.create);
 router.post("/updateDish", dishes.update);
 
 // Retrieve all Tutorials
-router.get("/:restaurant", dishes.findAll);
+router.get("/:restaurantId", dishes.findAll);
 
 // Retrieve all published Tutorials
 router.get("/published", dishes.findAllPublished);

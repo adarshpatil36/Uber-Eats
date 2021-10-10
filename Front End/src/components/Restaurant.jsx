@@ -8,6 +8,7 @@ import { ACTION_TYPE } from "../actions/ActionTypes";
 import { useHistory } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { ENV } from "../config";
 
 const Restaurant = ({
   addDishes,
@@ -18,11 +19,15 @@ const Restaurant = ({
 }) => {
   let history = useHistory();
   useEffect(() => {
-    addDishes(dishes);
-    return () => {
-      // clearRestaurantData();
-    };
+    getDishes();
   }, []);
+
+  const getDishes = () => {
+    const restaurantId = selectedRestaurant.id;
+    // fetch(`${ENV}\${restaurantId}`);
+    addDishes(dishes);
+  };
+
   const backgroundImgStyle = {
     backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.6)), url('https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly9kMXJhbHNvZ25qbmczNy5jbG91ZGZyb250Lm5ldC85Y2VmYjIzYy00ODk5LTQ5ZGYtYjE0ZC1lOWMwZjdhMjRmMmIuanBlZw==')`,
   };

@@ -29,13 +29,10 @@ const RestaurantDashboard = ({ restData }) => {
   useEffect(() => {
     getDishes();
   }, []);
-  // useEffect(() => {
-  //   setData(restData);
-  // }, [restData]);
 
   const getDishes = () => {
-    const restaurant = restData.name;
-    fetch(`${ENV.LOCAL_HOST}/dishes/${restaurant}`)
+    const restaurantId = restData.id;
+    fetch(`${ENV.LOCAL_HOST}/dishes/${restaurantId}`)
       .then((res) => res.json())
       .then((data) => {
         setDishes(data);

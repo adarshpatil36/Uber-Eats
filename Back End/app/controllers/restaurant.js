@@ -24,6 +24,8 @@ exports.create = (req, res) => {
     email: req.body.email,
     password: req.body.password,
     contact: req.body.contact,
+    deliveryTime: req.body.deliveryTime,
+    deliveryFee: req.body.deliveryFee,
     country: req.body.country,
     restaurantPic: req.body.restaurantPic,
     isRestaurant: req.body.isRestaurant,

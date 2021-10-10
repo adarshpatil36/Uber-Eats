@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
     imageURL: {
       type: Sequelize.STRING,
     },
-    restaurant: {
+    restaurantId: {
       type: Sequelize.STRING,
     },
   });

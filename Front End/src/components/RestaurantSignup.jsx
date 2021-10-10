@@ -18,6 +18,8 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
     contact: "",
     email: "",
     password: "",
+    deliveryTime: "",
+    deliveryFee: "",
   });
   let history = useHistory();
 
@@ -40,13 +42,16 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
       data.country &&
       data.contact &&
       data.email &&
-      data.password
+      data.password &&
+      data.deliveryTime &&
+      data.deliveryFee
     ) {
       postData["isRestaurant"] = true;
       await axios
         .post("http://localhost:8080/restaurant", postData)
         .then((res) => {
           if (res.status === 200) {
+            postData["id"] = res.data.id;
             loginUser(postData);
             changeActiveTab(CONSTANTS.DASHBOARD);
             history.push("/restaurantDashboard");
@@ -97,6 +102,27 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
               id="timings"
               placeholder="Timings"
               value={data["timings"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-8">
+            <Form.Label>Delivery Fees</Form.Label>
+            <Form.Control
+              id="deliveryFee"
+              placeholder="Delivery Fees"
+              value={data["deliveryFee"]}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-8">
+            <Form.Label>Delivery Time</Form.Label>
+            <Form.Control
+              id="deliveryTime"
+              placeholder="Delivery Time"
+              value={data["deliveryTime"]}
               onChange={handleChange}
               required
             />
