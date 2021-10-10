@@ -50,7 +50,7 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
           if (res.status === 200) {
             loginUser(postData);
             changeActiveTab(CONSTANTS.DASHBOARD);
-            history.push("/dashboard");
+            history.push("/restaurantDashboard");
           } else {
             console.log("Data post failed ");
           }

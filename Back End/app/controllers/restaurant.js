@@ -42,20 +42,56 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {};
+exports.findAll = (req, res) => {
+  Restaurant.findAll()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials.",
+      });
+    });
+};
 
-// Find a single Tutorial with an id
-exports.findOne = (req, res) => {};
-
-// Update a Tutorial by the id in the request
+exports.findOne = (req, res) => {
+  const name = req.body.name;
+  const password = req.body.password;
+  console.log(name, " ", password);
+  Restaurant.findOne({
+    where: {
+      password: password,
+      [Op.or]: [
+        {
+          name: name,
+        },
+        {
+          email: name,
+        },
+      ],
+    },
+  })
+    .then((data) => {
+      if (data) {
+        const { password, ...postData } = data.dataValues;
+        res.send(postData);
+      } else {
+        res.status(404).send({
+          message: "Invalid Credentials",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(200).send({
+        message: "Invalid Credentials",
+      });
+    });
+};
 exports.update = (req, res) => {};
 
-// Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {};
 
-// Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {};
 
-// Find all published Tutorials
 exports.findAllPublished = (req, res) => {};

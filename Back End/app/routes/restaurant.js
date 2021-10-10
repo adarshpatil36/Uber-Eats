@@ -5,6 +5,8 @@ var router = require("express").Router();
 // Create a new Tutorial
 router.post("/", restaurant.create);
 
+router.post("/login", restaurant.findOne);
+
 // Retrieve all Tutorials
 router.get("/", restaurant.findAll);
 

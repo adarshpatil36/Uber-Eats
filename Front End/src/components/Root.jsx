@@ -8,6 +8,7 @@ import { PastOrders } from "./PastOrders";
 import InfoForms from "./InfoForms";
 import CustomerSignup from "./CustomerSignup";
 import RestaurantSignup from "./RestaurantSignup";
+import { RestaurantDashboard } from "./RestaurantDashboard";
 
 const Root = () => {
   return (
@@ -24,6 +25,7 @@ const Root = () => {
         <Route path="/orders" component={OrderItem} />
         <Route path="/pastOrders" component={PastOrders} />
         <Route path="/restaurantDetails" component={InfoForms} />
+        <Route path="/restaurantDashboard" component={RestaurantDashboard} />
       </Switch>
     </BrowserRouter>
   );

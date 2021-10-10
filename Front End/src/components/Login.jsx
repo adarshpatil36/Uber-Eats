@@ -12,6 +12,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
   const [uname, setUname] = useState("");
   const [password, setPassword] = useState("");
   const [isResSignIn, setIsResSignIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   let history = useHistory();
 
@@ -50,18 +51,36 @@ export const Login = ({ changeActiveTab, loginUser }) => {
   };
 
   const login = () => {
-    const data = { uname, password };
-    axios.post("http://localhost:8080/user/login", data).then((res) => {
-      if (res.status === 200) {
-        const postData = { ...res["data"] };
-        localStorage.setItem("token", JSON.stringify(postData["token"]));
-        loginUser(postData["userData"][0]);
-        changeActiveTab(CONSTANTS.DASHBOARD);
-        history.push("/dashboard");
-      } else {
-        console.log("Data post failed ");
-      }
-    });
+    if (isResSignIn) {
+      const data = { name: uname, password: password };
+
+      axios.post("http://localhost:8080/restaurant/login", data).then((res) => {
+        if (res.status === 200) {
+          const postData = { ...res["data"] };
+          localStorage.setItem("token", JSON.stringify(postData["token"]));
+          loginUser(postData);
+          changeActiveTab(CONSTANTS.DASHBOARD);
+          history.push("/restaurantDashboard");
+        } else {
+          setErrorMessage("Invalid Credentials");
+          console.log("Data post failed ");
+        }
+      });
+    } else {
+      const data = { uname, password };
+      axios.post("http://localhost:8080/users/login", data).then((res) => {
+        if (res.status === 200 && !res.data.message) {
+          const postData = { ...res["data"] };
+          localStorage.setItem("token", JSON.stringify(postData["token"]));
+          loginUser(postData["userData"][0]);
+          changeActiveTab(CONSTANTS.DASHBOARD);
+          history.push("/dashboard");
+        } else {
+          setErrorMessage("Invalid Credentials");
+          console.log("Data post failed ");
+        }
+      });
+    }
   };
 
   return (
@@ -93,6 +112,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
         <button onClick={login} id="loginButton">
           Next
         </button>
+        {errorMessage && <span className="errorMessage">{errorMessage}</span>}
         {isResSignIn ? (
           <p>
             Sign In with User

@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ACTION_TYPE } from "../actions/ActionTypes";
-import { URLS } from "../constants/api";
-import { restaurants } from "../constants/static data/restaurants";
+import { ENV } from "../config";
 
 const DisplayResultCard = ({ setSelectedRestaurant }) => {
   let history = useHistory();
+
+  const [restaurants, setrestaurants] = useState([]);
+
+  useEffect(() => {
+    fetch(`${ENV.LOCAL_HOST}/restaurant`)
+      .then((res) => res.json())
+      .then((data) => {
+        setrestaurants(data);
+      });
+  }, []);
 
   const openRestaurantCard = (res) => {
     setSelectedRestaurant(res);

@@ -15,6 +15,12 @@ module.exports = (sequelize, Sequelize) => {
     timings: {
       type: Sequelize.STRING,
     },
+    deliveryTime: {
+      type: Sequelize.STRING,
+    },
+    deliveryFee: {
+      type: Sequelize.STRING,
+    },
     rating: {
       type: Sequelize.INTEGER,
     },

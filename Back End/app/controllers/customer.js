@@ -39,14 +39,12 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {};
-
-// Find a single Tutorial with an id
 
 exports.findOne = (req, res) => {
   const user = req.body.user;
   const password = req.body.password;
+
   Customer.findOne({
     where: {
       password: password,
@@ -65,26 +63,22 @@ exports.findOne = (req, res) => {
         const { password, ...postData } = data.dataValues;
         res.send(postData);
       } else {
-        res.status(404).send({
-          message: `Cannot find Tutorial with id=${id}.`,
+        res.status(200).send({
+          message: "Invalid Credentials",
         });
       }
     })
     .catch((err) => {
-      res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id,
+      res.status(200).send({
+        message: "Invalid Credentials",
       });
     });
 };
 
-// Update a Tutorial by the id in the request
 exports.update = (req, res) => {};
 
-// Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {};
 
-// Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {};
 
-// Find all published Tutorials
 exports.findAllPublished = (req, res) => {};
