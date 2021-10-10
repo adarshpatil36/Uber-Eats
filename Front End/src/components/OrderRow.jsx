@@ -9,6 +9,7 @@ export default function OrderRow({
   address,
   setselectedAddress,
   selectedAddress,
+  cancelOrder,
 }) {
   const onChangeDropdown = (item) => {
     setselectedAddress(item);
@@ -72,14 +73,25 @@ export default function OrderRow({
             </DropdownButton>
           </div>
           <p>{selectedAddress?.address}</p>
-          <div className="cart_buttons">
-            <button
-              type="button"
-              className="button cart_button_checkout"
-              onClick={placeOrder}
-            >
-              Place Order
-            </button>
+          <div className="buttongroups">
+            <span className="cart_buttons">
+              <button
+                type="button"
+                className="button cart_button_checkout"
+                onClick={cancelOrder}
+              >
+                Cancel Order
+              </button>
+            </span>
+            <span className="cart_buttons">
+              <button
+                type="button"
+                className="button cart_button_checkout"
+                onClick={placeOrder}
+              >
+                Place Order
+              </button>
+            </span>
           </div>
         </div>
       </div>

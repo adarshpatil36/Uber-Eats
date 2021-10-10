@@ -38,6 +38,10 @@ const OrderItem = ({
     return acc + quan * obj["price"];
   }, 0);
 
+  const cancelOrder = () => {
+    history.push("/dashboard");
+  };
+
   const placeOrder = () => {
     console.log("selectedDishes", selectedDishes);
     const orderItems = selectedDishes.map((item) => ({
@@ -76,6 +80,7 @@ const OrderItem = ({
               address={address}
               setselectedAddress={setselectedAddress}
               selectedAddress={selectedAddress}
+              cancelOrder={cancelOrder}
             />
           </div>
         </div>
