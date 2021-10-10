@@ -445,34 +445,34 @@ export default RestaurantDetails;
 // function RestaurantDetails(props) {
 //   return (
 //     <form className="RestaurantDetails">
-//       <div class="form-row">
-//         <div class="col-md-4 mb-3">
+//       <div className="form-row">
+//         <div className="col-md-4 mb-3">
 //           <label for="validationDefault01">Restaurant name</label>
 //           <input
 //             type="text"
-//             class="form-control"
+//             className="form-control"
 //             id="validationDefault01"
 //             placeholder="First name"
 //             value="Mark"
 //             required
 //           />
 //         </div>
-//         <div class="col-md-4 mb-3">
+//         <div className="col-md-4 mb-3">
 //           <label for="validationDefault02">Owner name</label>
 //           <input
 //             type="text"
-//             class="form-control"
+//             className="form-control"
 //             id="validationDefault02"
 //             placeholder="Last name"
 //             value="Otto"
 //             required
 //           />
 //         </div>
-//         <div class="col-md-4 mb-3">
+//         <div className="col-md-4 mb-3">
 //           <label for="validationDefault02">Restaurant Description</label>
 //           <input
 //             type="text"
-//             class="form-control"
+//             className="form-control"
 //             id="validationDefault02"
 //             placeholder="Last name"
 //             value="Otto"
@@ -481,7 +481,7 @@ export default RestaurantDetails;
 //         </div>
 //         <label for="validationDefaultUsername">Country </label> &nbsp; &nbsp;
 //         &nbsp;
-//         <select class="custom-select">
+//         <select className="custom-select">
 //           <option value="  " selected>
 //             Select a country
 //           </option>
@@ -728,17 +728,17 @@ export default RestaurantDetails;
 //           <option value="ZM">Zambia</option>
 //           <option value="ZW">Zimbabwe</option>
 //         </select>
-//         <div class="col-md-4 mb-3">
+//         <div className="col-md-4 mb-3">
 //           <label for="validationDefaultUsername">Username</label>
-//           <div class="input-group">
-//             <div class="input-group-prepend">
-//               <span class="input-group-text" id="inputGroupPrepend2">
+//           <div className="input-group">
+//             <div className="input-group-prepend">
+//               <span className="input-group-text" id="inputGroupPrepend2">
 //                 @
 //               </span>
 //             </div>
 //             <input
 //               type="text"
-//               class="form-control"
+//               className="form-control"
 //               id="validationDefaultUsername"
 //               placeholder="Username"
 //               aria-describedby="inputGroupPrepend2"
@@ -747,12 +747,12 @@ export default RestaurantDetails;
 //           </div>
 //         </div>
 //       </div>
-//       <div class="form-row">
-//         <div class="col-md-4 mb-3">
+//       <div className="form-row">
+//         <div className="col-md-4 mb-3">
 //           <label for="validationDefault03">Country</label>
 //           <input
 //             type="text"
-//             class="form-control"
+//             className="form-control"
 //             id="validationDefault03"
 //             placeholder="City"
 //             required
@@ -760,21 +760,21 @@ export default RestaurantDetails;
 //         </div>
 //       </div>
 
-//       <div class="form-group">
-//         <div class="form-check">
+//       <div className="form-group">
+//         <div className="form-check">
 //           <input
-//             class="form-check-input"
+//             className="form-check-input"
 //             type="checkbox"
 //             value=""
 //             id="invalidCheck2"
 //             required
 //           />
-//           <label class="form-check-label" for="invalidCheck2">
+//           <label className="form-check-label" for="invalidCheck2">
 //             Agree to terms and conditions
 //           </label>
 //         </div>
 //       </div>
-//       <button class="btn btn-primary" type="submit">
+//       <button className="btn btn-primary" type="submit">
 //         Save
 //       </button>
 //     </form>

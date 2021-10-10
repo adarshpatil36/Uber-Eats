@@ -65,8 +65,8 @@ const OrderItem = ({
     <>
       <NavBar />
       <div className="OrderItem">
-        <div class="cart_section">
-          <div class="container-fluid">
+        <div className="cart_section">
+          <div className="container-fluid">
             <OrderRow
               quantityCount={quantityCount}
               selectedRestaurant={selectedRestaurant}

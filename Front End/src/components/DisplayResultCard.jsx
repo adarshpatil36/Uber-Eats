@@ -26,16 +26,16 @@ const DisplayResultCard = ({ setSelectedRestaurant }) => {
   return (
     <div className="displayResultCard">
       <h3> Popular near you</h3>
-      <div class="container">
-        <div class="flex">
+      <div className="container">
+        <div className="flex">
           {restaurants.map((item) => (
             <div
-              class="card"
+              className="card"
               id={item.id}
               onClick={() => openRestaurantCard(item)}
             >
               <img src={item.restaurantPic} alt="" />
-              <div class="card-body">
+              <div className="card-body">
                 <h3>{item.name}</h3>
                 <p>Delivery Fees: ${item.deliveryFee}</p>
                 <p>Delivery Time: {item.deliveryTime}</p>

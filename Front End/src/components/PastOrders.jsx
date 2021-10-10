@@ -36,8 +36,8 @@ const PastOrders = ({ userData }) => {
       </div>
       {orders.length > 0 && (
         <div className="OrderItem">
-          <div class="cart_section">
-            <div class="container-fluid">
+          <div className="cart_section">
+            <div className="container-fluid">
               {orders.map((item) => (
                 <PastOrderCard selectedRestaurant={item} />
               ))}

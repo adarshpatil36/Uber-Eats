@@ -11,13 +11,13 @@ const IncDecCounter = ({ item, increaseQuantity, decreaseQuantity }) => {
   };
   return (
     <span>
-      <button class="quantity__minus" onClick={decreamentCount}>
+      <button className="quantity__minus" onClick={decreamentCount}>
         -
       </button>
-      <label name="quantity" type="text" class="quantity__input">
+      <label name="quantity" type="text" className="quantity__input">
         {item.quantity || 0}
       </label>
-      <button class="quantity__plus" onClick={increamentCount}>
+      <button className="quantity__plus" onClick={increamentCount}>
         +
       </button>
     </span>

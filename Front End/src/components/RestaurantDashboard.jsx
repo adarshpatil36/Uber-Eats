@@ -17,7 +17,7 @@ const RestaurantDashboard = ({ restData }) => {
     description: "",
     price: 0,
     imageURL:
-      "https://d1ralsognjng37.cloudfront.net/7a644bda-66da-43d5-8fb3-356f0b171e3e.jpeg",
+      "https://d1ralsognjng37.cloudfront.net/9be7cad6-3513-43da-91a6-60d682c7dc95.jpeg",
     restaurantId: 0,
     rating: 3,
   });
@@ -43,7 +43,7 @@ const RestaurantDashboard = ({ restData }) => {
         description: "",
         price: 0,
         imageURL:
-          "https://d1ralsognjng37.cloudfront.net/7a644bda-66da-43d5-8fb3-356f0b171e3e.jpeg",
+          "https://d1ralsognjng37.cloudfront.net/9be7cad6-3513-43da-91a6-60d682c7dc95.jpeg",
         restaurantId: 0,
         rating: 3,
       });

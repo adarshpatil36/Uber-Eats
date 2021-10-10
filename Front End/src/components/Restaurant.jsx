@@ -64,12 +64,16 @@ const Restaurant = ({
         {restDishes.length > 0
           ? restDishes.map((item) => {
               return (
-                <div class="card" id={item.id}>
-                  <div class="card-body">
-                    <h5 class="card-title">{item.name}</h5>
-                    <img class="card-img-top" src={item.image} alt="Dishes" />
-                    <p class="card-text">{item.desc}</p>
-                    <span class="card-subtitle mb-2 text-muted">
+                <div className="card" id={item.id}>
+                  <div className="card-body">
+                    <h5 className="card-title">{item.name}</h5>
+                    <img
+                      className="card-img-top"
+                      src={item.imageURL}
+                      alt="Dishes"
+                    />
+                    <p className="card-text">{item.desc}</p>
+                    <span className="card-subtitle mb-2 text-muted">
                       ${item.price}
                       <IncDecCounter
                         item={item}
