@@ -7,6 +7,7 @@ import { ACTION_TYPE } from "../actions/ActionTypes";
 import { CONSTANTS } from "../constants/constants";
 import { useHistory } from "react-router";
 import axios from "axios";
+import { restaurants } from "../constants/static data/restaurants";
 
 const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
   const [data, setData] = useState({
@@ -46,7 +47,9 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
       data.deliveryTime &&
       data.deliveryFee
     ) {
+      var item = restaurants[Math.floor(Math.random() * restaurants.length)];
       postData["isRestaurant"] = true;
+      postData["restaurantPic"] = item.url;
       await axios
         .post("http://localhost:8080/restaurant", postData)
         .then((res) => {

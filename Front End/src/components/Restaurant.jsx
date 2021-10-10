@@ -61,25 +61,27 @@ const Restaurant = ({
       </div>
       <h3>Dishes:</h3>
       <div className="dishCard">
-        {restDishes.map((item) => {
-          return (
-            <div class="card" id={item.id}>
-              <div class="card-body">
-                <h5 class="card-title">{item.name}</h5>
-                <img class="card-img-top" src={item.image} alt="Dishes" />
-                <p class="card-text">{item.desc}</p>
-                <span class="card-subtitle mb-2 text-muted">
-                  ${item.price}
-                  <IncDecCounter
-                    item={item}
-                    increaseQuantity={increaseQuantity}
-                    decreaseQuantity={decreaseQuantity}
-                  />
-                </span>
-              </div>
-            </div>
-          );
-        })}
+        {restDishes.length > 0
+          ? restDishes.map((item) => {
+              return (
+                <div class="card" id={item.id}>
+                  <div class="card-body">
+                    <h5 class="card-title">{item.name}</h5>
+                    <img class="card-img-top" src={item.image} alt="Dishes" />
+                    <p class="card-text">{item.desc}</p>
+                    <span class="card-subtitle mb-2 text-muted">
+                      ${item.price}
+                      <IncDecCounter
+                        item={item}
+                        increaseQuantity={increaseQuantity}
+                        decreaseQuantity={decreaseQuantity}
+                      />
+                    </span>
+                  </div>
+                </div>
+              );
+            })
+          : "No dishes found for the selected restaurant"}
       </div>
     </div>
   );

@@ -34,10 +34,10 @@ const DisplayResultCard = ({ setSelectedRestaurant }) => {
               id={item.id}
               onClick={() => openRestaurantCard(item)}
             >
-              <img src={item.url} alt="" />
+              <img src={item.restaurantPic} alt="" />
               <div class="card-body">
-                <h3>{item.title}</h3>
-                <p>{item.deliveryFee}</p>
+                <h3>{item.name}</h3>
+                <p>Delivery Fees: ${item.deliveryFee}</p>
                 <p>Delivery Time: {item.deliveryTime}</p>
               </div>
             </div>
