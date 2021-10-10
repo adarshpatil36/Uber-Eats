@@ -24,8 +24,12 @@ const Restaurant = ({
 
   const getDishes = () => {
     const restaurantId = selectedRestaurant.id;
-    // fetch(`${ENV}\${restaurantId}`);
-    addDishes(dishes);
+    fetch(`${ENV.LOCAL_HOST}/dishes/${restaurantId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        addDishes(data);
+        console.log(">>", data);
+      });
   };
 
   const backgroundImgStyle = {
@@ -65,7 +69,7 @@ const Restaurant = ({
                 <img class="card-img-top" src={item.image} alt="Dishes" />
                 <p class="card-text">{item.desc}</p>
                 <span class="card-subtitle mb-2 text-muted">
-                  ${item.price.toFixed(2)}
+                  ${item.price}
                   <IncDecCounter
                     item={item}
                     increaseQuantity={increaseQuantity}

@@ -8,7 +8,7 @@ router.post("/", dishes.create);
 // router.post("/updateDish", dishes.bulkCreate);
 router.post("/updateDish", dishes.update);
 
-// Retrieve all Tutorials
+// Retrieve all Dishes associated with Restaurant
 router.get("/:restaurantId", dishes.findAll);
 
 // Retrieve all published Tutorials
