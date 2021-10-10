@@ -60,11 +60,13 @@ exports.create = async (req, res) => {
 const { QueryTypes } = require("sequelize");
 
 // Retrieve all Orders from the database.
+// "SELECT * FROM restaurants INNER JOIN (SELECT dishId,	orderId,	quantity,restid,	userid,	deliveryAddress	,totalAmount,	orderTime FROM orderItems INNER JOIN orders ON orders.id=orderItems.orderId) AS A ON A.restid=restaurants.id",
+
 exports.findAll = async (req, res) => {
   const userId = req.params.userId;
   console.log("UserID ", userId);
   const users = await db.sequelize.query(
-    "SELECT * FROM restaurants INNER JOIN (SELECT dishId,	orderId,	quantity,restid,	userid,	deliveryAddress	,totalAmount,	orderTime FROM orderItems INNER JOIN orders ON orders.id=orderItems.orderId) AS A ON A.restid=restaurants.id",
+    "SELECT * FROM restaurants INNER JOIN (SELECT dishId,	price, orderId, name as dishName,	quantity,restid,	userid,	deliveryAddress	,totalAmount,	orderTime FROM orderItems INNER JOIN orders ON orders.id=orderItems.orderId INNER JOIN dishes ON dishes.id=orderItems.dishId) AS A ON A.restid=restaurants.id",
     {
       type: QueryTypes.SELECT,
     }

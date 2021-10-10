@@ -8,7 +8,7 @@ import PastOrderCard from "./PastOrderCard";
 import { useHistory } from "react-router";
 
 const PastOrders = ({ userData }) => {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState({});
   useEffect(() => {
     getOrders();
   }, []);
@@ -21,25 +21,30 @@ const PastOrders = ({ userData }) => {
     fetch(`${ENV.LOCAL_HOST}/order/${userData.id}`)
       .then((res) => res.json())
       .then((data) => {
-        setOrders(data);
-        console.log(data);
+        const result = data.reduce(function (r, a) {
+          r[a.orderId] = r[a.orderId] || [];
+          r[a.orderId].push(a);
+          return r;
+        }, Object.create(null));
+        setOrders(result);
+        console.log(result);
       });
   };
   return (
     <div>
       <NavBar />
       <div className="postOrder">
-        Past Orders
+        <div>Past Orders</div>
         <button type="button" onClick={redirectToDashboard}>
           Back to home
         </button>
       </div>
-      {orders.length > 0 && (
+      {Object.keys(orders).length > 0 && (
         <div className="OrderItem">
           <div className="cart_section">
             <div className="container-fluid">
-              {orders.map((item) => (
-                <PastOrderCard selectedRestaurant={item} />
+              {Object.keys(orders).map((item) => (
+                <PastOrderCard selectedRestaurant={orders[item]} />
               ))}
             </div>
           </div>

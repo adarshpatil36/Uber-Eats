@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import { useHistory } from "react-router-dom";
 import { CONSTANTS } from "../constants/constants";
 import FooterCard from "./FooterCard";
+import { ENV } from "../config";
 
 export const Login = ({ changeActiveTab, loginUser }) => {
   const [uname, setUname] = useState("");
@@ -53,7 +54,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
     if (isResSignIn) {
       const data = { name: uname, password: password };
 
-      axios.post("http://localhost:8080/restaurant/login", data).then((res) => {
+      axios.post(`${ENV.LOCAL_HOST}/restaurant/login`, data).then((res) => {
         if (res.status === 200) {
           const postData = { ...res["data"] };
           localStorage.setItem("token", JSON.stringify(postData["token"]));
@@ -67,7 +68,7 @@ export const Login = ({ changeActiveTab, loginUser }) => {
       });
     } else {
       const data = { user: uname, password };
-      axios.post("http://localhost:8080/users/login", data).then((res) => {
+      axios.post(`${ENV.LOCAL_HOST}/users/login`, data).then((res) => {
         if (res.status === 200 && !res.data.message) {
           const postData = { ...res["data"] };
           localStorage.setItem("token", JSON.stringify(postData["token"]));

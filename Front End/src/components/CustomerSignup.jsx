@@ -8,6 +8,7 @@ import axios from "axios";
 import { CONSTANTS } from "../constants/constants";
 import { ACTION_TYPE } from "../actions/ActionTypes";
 import { connect } from "react-redux";
+import { ENV } from "../config";
 
 const CustomerSignup = ({ changeActiveTab, loginUser }) => {
   const [data, setData] = useState({
@@ -32,7 +33,7 @@ const CustomerSignup = ({ changeActiveTab, loginUser }) => {
 
   const signUp = async () => {
     const { confPassword, ...postData } = data;
-    await axios.post("http://localhost:8080/users", postData).then((res) => {
+    await axios.post(`${ENV.LOCAL_HOST}/users`, postData).then((res) => {
       if (res.status === 200) {
         postData["id"] = res.data.id;
         loginUser(postData);

@@ -36,7 +36,7 @@ const RestaurantDashboard = ({ restData }) => {
 
   const saveNewDish = () => {
     const postData = { ...newDish, restaurantId: restData.id };
-    axios.post("http://localhost:8080/dishes", postData).then(() => {
+    axios.post(`${ENV.LOCAL_HOST}/dishes`, postData).then(() => {
       setShowDish(false);
       setnewDish({
         name: "",
@@ -84,7 +84,7 @@ const RestaurantDashboard = ({ restData }) => {
 
   const updateDishes = (e, dId) => {
     const dish = dishes.find((item) => item.id === dId);
-    axios.post("http://localhost:8080/dishes/updateDish", dish).then((res) => {
+    axios.post(`${ENV.LOCAL_HOST}/dishes/updateDish`, dish).then((res) => {
       if (res.status === 200) {
         setShow(true);
         // alert("Dish updated succesfully");

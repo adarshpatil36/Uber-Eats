@@ -58,7 +58,7 @@ const OrderItem = ({
     };
 
     axios
-      .post("http://localhost:8080/order", postData)
+      .post(`${ENV.LOCAL_HOST}/order`, postData)
       .then(() => console.log("Data posted successfully"));
     clearRestaurantData();
 

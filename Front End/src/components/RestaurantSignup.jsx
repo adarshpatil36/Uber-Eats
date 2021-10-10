@@ -8,6 +8,7 @@ import { CONSTANTS } from "../constants/constants";
 import { useHistory } from "react-router";
 import axios from "axios";
 import { restaurants } from "../constants/static data/restaurants";
+import { ENV } from "../config";
 
 const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
   const [data, setData] = useState({
@@ -50,18 +51,16 @@ const RestaurantSignup = ({ changeActiveTab, loginUser }) => {
       var item = restaurants[Math.floor(Math.random() * restaurants.length)];
       postData["isRestaurant"] = true;
       postData["restaurantPic"] = item.url;
-      await axios
-        .post("http://localhost:8080/restaurant", postData)
-        .then((res) => {
-          if (res.status === 200) {
-            postData["id"] = res.data.id;
-            loginUser(postData);
-            changeActiveTab(CONSTANTS.DASHBOARD);
-            history.push("/restaurantDashboard");
-          } else {
-            console.log("Data post failed ");
-          }
-        });
+      await axios.post(`${ENV.LOCAL_HOST}/restaurant`, postData).then((res) => {
+        if (res.status === 200) {
+          postData["id"] = res.data.id;
+          loginUser(postData);
+          changeActiveTab(CONSTANTS.DASHBOARD);
+          history.push("/restaurantDashboard");
+        } else {
+          console.log("Data post failed ");
+        }
+      });
     }
   };
   const redirectToLogin = () => {
