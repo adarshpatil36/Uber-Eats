@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { ACTION_TYPE } from "../actions/ActionTypes";
@@ -7,6 +7,8 @@ import { CONSTANTS } from "../constants/constants";
 import Logo from "./Logo";
 
 const NavBar = ({ userData, logout, changeActiveTab, navigateTo }) => {
+  const [deliveryMode, setdeliveryMode] = useState("Delivery Mode");
+
   const history = useHistory();
   const onLogout = () => {
     localStorage.setItem("token", "");
@@ -22,14 +24,28 @@ const NavBar = ({ userData, logout, changeActiveTab, navigateTo }) => {
     history.push("/dashboard");
   };
 
+  const onChangeDropdown = (item) => {
+    setdeliveryMode(item);
+  };
+
   return userData ? (
     <div className="NavBar">
       <Logo navigateTo={navigateTo || redirectToDashboard} />
       {window.location.href.includes("dashboard") && (
         <>
-          <DropdownButton id="dropdown-basic-button" title="Delivery Mode">
-            <Dropdown.Item>Pick Up</Dropdown.Item>
-            <Dropdown.Item>Delivery</Dropdown.Item>
+          <DropdownButton id="dropdown-basic-button" title={deliveryMode}>
+            <Dropdown.Item
+              id="pickup"
+              onClick={() => onChangeDropdown("Pick Up")}
+            >
+              Pick Up
+            </Dropdown.Item>
+            <Dropdown.Item
+              id="delivery"
+              onClick={() => onChangeDropdown("Delivery")}
+            >
+              Delivery
+            </Dropdown.Item>
           </DropdownButton>
           <input placeholder="Address"></input>
           <input placeholder="What are your cravings?" type="search"></input>

@@ -15,7 +15,9 @@ const OrderItem = ({
   userData,
 }) => {
   const [address, setaddress] = useState("");
-  const [selectedAddress, setselectedAddress] = useState("");
+  const [selectedAddress, setselectedAddress] = useState({
+    type: "Select Address",
+  });
   let history = useHistory();
 
   useEffect(() => {

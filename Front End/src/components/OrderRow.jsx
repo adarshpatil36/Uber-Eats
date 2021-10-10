@@ -60,7 +60,10 @@ export default function OrderRow({
 
           <div>
             <div className="cart_item_text">Address</div>
-            <DropdownButton id="dropdown-basic-button" title="Select Address">
+            <DropdownButton
+              id="dropdown-basic-button"
+              title={selectedAddress.type}
+            >
               {address.length > 0 &&
                 address.map((item) => (
                   <Dropdown.Item
