@@ -4,7 +4,10 @@ $white-color: white;
 $primary-font: UberMoveText-Medium, Helvetica, sans-serif;
 
 $title-font-weight: 700;
-
+// .App{
+  // display: flex;
+  // justify-content: center;
+// }
 #root {
   margin: auto;
   // width: 80%;
@@ -103,7 +106,7 @@ $title-font-weight: 700;
     border: 1px solid black;
   }
   button {
-    width: 100px;
+    // width: 100px;
     background-color: green;
     color: white;
     font-weight: 600;
@@ -193,6 +196,7 @@ img:hover {
 }
 .RestaurantDashboard{
   width: 70%;
+  margin: auto;
 }
 .dishesDashboard{
   display: flex;

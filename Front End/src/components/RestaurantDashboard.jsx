@@ -37,6 +37,7 @@ const RestaurantDashboard = ({ restData }) => {
   const saveNewDish = () => {
     const postData = { ...newDish, restaurantId: restData.id };
     axios.post(`${ENV.LOCAL_HOST}/dishes`, postData).then(() => {
+      setDishes([...dishes, postData]);
       setShowDish(false);
       setnewDish({
         name: "",
@@ -47,6 +48,8 @@ const RestaurantDashboard = ({ restData }) => {
         restaurantId: 0,
         rating: 3,
       });
+
+      history.push("./restaurantDashboard");
       console.log("Posted succesfully");
     });
   };

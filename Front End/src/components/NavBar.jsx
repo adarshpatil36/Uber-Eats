@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { ACTION_TYPE } from "../actions/ActionTypes";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 import { CONSTANTS } from "../constants/constants";
 import Logo from "./Logo";
 
@@ -26,7 +27,10 @@ const NavBar = ({ userData, logout, changeActiveTab, navigateTo }) => {
       <Logo navigateTo={navigateTo || redirectToDashboard} />
       {window.location.href.includes("dashboard") && (
         <>
-          <input placeholder="Mode"></input>
+          <DropdownButton id="dropdown-basic-button" title="Delivery Mode">
+            <Dropdown.Item>Pick Up</Dropdown.Item>
+            <Dropdown.Item>Delivery</Dropdown.Item>
+          </DropdownButton>
           <input placeholder="Address"></input>
           <input placeholder="What are your cravings?" type="search"></input>
         </>

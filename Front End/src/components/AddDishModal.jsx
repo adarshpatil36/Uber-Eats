@@ -41,8 +41,11 @@ export default function AddDishModal({
             <Col sm="10">
               <Form.Control
                 type="text"
+                id="description"
                 className="modal-Qty"
-                onChange={() => {}}
+                onChange={(e) => {
+                  handleNewDish(e);
+                }}
               />
             </Col>
             <Form.Label column sm="3">
@@ -51,8 +54,11 @@ export default function AddDishModal({
             <Col sm="10">
               <Form.Control
                 type="text"
+                id="price"
                 className="modal-Qty"
-                onChange={() => {}}
+                onChange={(e) => {
+                  handleNewDish(e);
+                }}
               />
             </Col>
             <Form.Label column sm="3">
@@ -61,8 +67,11 @@ export default function AddDishModal({
             <Col sm="10">
               <Form.Control
                 type="text"
+                id="rating"
                 className="modal-Qty"
-                onChange={() => {}}
+                onChange={(e) => {
+                  handleNewDish(e);
+                }}
               />
             </Col>
           </Form.Group>
