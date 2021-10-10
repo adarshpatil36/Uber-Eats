@@ -5,7 +5,7 @@ import { ACTION_TYPE } from "../actions/ActionTypes";
 import { CONSTANTS } from "../constants/constants";
 import Logo from "./Logo";
 
-const NavBar = ({ userData, logout, changeActiveTab }) => {
+const NavBar = ({ userData, logout, changeActiveTab, navigateTo }) => {
   const history = useHistory();
   const onLogout = () => {
     localStorage.setItem("token", "");
@@ -23,7 +23,7 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
 
   return userData ? (
     <div className="NavBar">
-      <Logo navigateTo={redirectToDashboard} />
+      <Logo navigateTo={navigateTo || redirectToDashboard} />
       {window.location.href.includes("dashboard") && (
         <>
           <input placeholder="Mode"></input>
@@ -49,7 +49,9 @@ const NavBar = ({ userData, logout, changeActiveTab }) => {
             <span>{userData.name || userData.user}</span>
           </div>
         )}
-        <button onClick={redirectToOrder}>My Orders</button>
+        {!window.location.href.includes("restaurantDashboard") && (
+          <button onClick={redirectToOrder}>My Orders</button>
+        )}
         <button onClick={onLogout}>Logout</button>
       </span>
     </div>

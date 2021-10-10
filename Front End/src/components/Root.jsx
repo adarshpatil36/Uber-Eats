@@ -8,7 +8,7 @@ import { PastOrders } from "./PastOrders";
 import InfoForms from "./InfoForms";
 import CustomerSignup from "./CustomerSignup";
 import RestaurantSignup from "./RestaurantSignup";
-import { RestaurantDashboard } from "./RestaurantDashboard";
+import RestaurantDashboard from "./RestaurantDashboard";
 
 const Root = () => {
   return (
