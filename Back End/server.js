@@ -3,11 +3,8 @@ const cors = require("cors");
 
 const app = express();
 
-// const SERVER = "http://localhost:8080"
-const SERVER = "http://3.16.107.120:3000";
-
 var corsOptions = {
-  origin: SERVER,
+  origin: "http://localhost:3000",
 };
 
 app.use(cors(corsOptions));
