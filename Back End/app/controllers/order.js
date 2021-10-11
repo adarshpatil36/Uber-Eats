@@ -30,21 +30,12 @@ exports.create = async (req, res) => {
       res.send(data);
       return data;
     })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the Order.",
-      });
-    });
-
-  console.log("OrderItems ", orderItem);
-  console.log("\norderData ", orderData);
+    .catch((err) => {});
 
   orderItems = orderItem.map((item) => {
     let orderId = orderData.id;
     return { orderId: orderId, ...item };
   });
-
-  console.log("Updated OrderItems ", orderItems);
 
   OrderItem.bulkCreate(orderItems)
     .then((data) => {
@@ -64,7 +55,6 @@ const { QueryTypes } = require("sequelize");
 
 exports.findAll = async (req, res) => {
   const userId = req.params.userId;
-  console.log("UserID ", userId);
   const users = await db.sequelize.query(
     "SELECT * FROM restaurants INNER JOIN (SELECT dishId,	price, orderId, name as dishName,	quantity,restid,	userid,	deliveryAddress	,totalAmount,	orderTime FROM orderItems INNER JOIN orders ON orders.id=orderItems.orderId INNER JOIN dishes ON dishes.id=orderItems.dishId) AS A ON A.restid=restaurants.id",
     {
@@ -72,18 +62,6 @@ exports.findAll = async (req, res) => {
     }
   );
   res.send(users);
-  // Order.findAll({
-  //   where: { userId: userId },
-  // })
-  //   .then((data) => {
-  //     res.send(data);
-  //   })
-  //   .catch((err) => {
-  //     res.status(500).send({
-  //       message:
-  //         err.message || "Some error occurred while retrieving tutorials.",
-  //     });
-  //   });
 };
 
 // Find a single Tutorial with an id
