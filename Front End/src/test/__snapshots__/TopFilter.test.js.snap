@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IncDecCounter testing renders correctly 1`] = `
+<div
+  className="topFilter"
+>
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/deals.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/grocery.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/convenience.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/alcohol.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/pharmacy.jpg"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/baby.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/specialty_foods.jpg"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/flowers.jpg"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/top_eats.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/asian.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/japanese.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/healthy.png"
+  />
+</div>
+`;
+
+exports[`TopFilter testing snapshot test of TopFilter 1`] = `
+<div
+  className="topFilter"
+>
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/deals.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/grocery.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/convenience.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/alcohol.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/pharmacy.jpg"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/baby.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/specialty_foods.jpg"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/flowers.jpg"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/top_eats.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/asian.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/japanese.png"
+  />
+  <img
+    alt=""
+    onClick={[Function]}
+    src="https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/healthy.png"
+  />
+</div>
+`;

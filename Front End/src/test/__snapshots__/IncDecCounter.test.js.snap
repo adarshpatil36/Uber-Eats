@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IncDecCounter testing renders correctly 1`] = `
+<span>
+  <button
+    className="quantity__minus"
+    onClick={[Function]}
+  >
+    -
+  </button>
+  <label
+    className="quantity__input"
+    data-testid="incDecCounter"
+    name="quantity"
+    type="text"
+  >
+    20
+  </label>
+  <button
+    className="quantity__plus"
+    onClick={[Function]}
+  >
+    +
+  </button>
+</span>
+`;

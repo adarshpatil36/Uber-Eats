@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<footer
+  className="footerCard"
+  data-testid="footerCard"
+>
+  <span>
+    © 2020 Uber Technologies, Inc.
+  </span>
+  <span>
+    Privacy Policy | Terms of Use
+  </span>
+</footer>
+`;
