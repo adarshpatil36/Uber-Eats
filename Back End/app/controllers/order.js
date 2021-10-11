@@ -36,17 +36,17 @@ exports.create = async (req, res) => {
     let orderId = orderData.id;
     return { orderId: orderId, ...item };
   });
-
-  OrderItem.bulkCreate(orderItems)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the Order.",
-      });
-    });
 };
+
+// OrderItem.bulkCreate(orderItems)
+//     .then((data) => {
+//       res.send(data);
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: err.message || "Some error occurred while creating the Order.",
+//       });
+//     });
 
 const { QueryTypes } = require("sequelize");
 
