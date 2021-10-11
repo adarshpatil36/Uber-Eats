@@ -9,23 +9,15 @@ export const AdvanceFilterCard = (props) => {
       <p>All Stores</p>
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
-          <Accordion.Header>Sort</Accordion.Header>
+          <Accordion.Header>Dietary</Accordion.Header>
           <Accordion.Body>
             <div>
               <input type="radio" id="age1" value="30" />
-              <span>Picked for you</span>
+              <span>Vegeterian</span>
             </div>
             <div>
               <input type="radio" id="age1" value="30" />
-              <span>Most Popular</span>
-            </div>
-            <div>
-              <input type="radio" id="age1" value="30" />
-              <span>Rating</span>
-            </div>
-            <div>
-              <input type="radio" id="age1" value="30" />
-              <span>Delivery Time</span>
+              <span>Non Vegeterian </span>
             </div>
           </Accordion.Body>
         </Accordion.Item>
@@ -58,12 +50,12 @@ export const AdvanceFilterCard = (props) => {
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey="3">
-          <Accordion.Header>Dietary</Accordion.Header>
+          <Accordion.Header>Sort</Accordion.Header>
           <Accordion.Body>
-            <button>Vegeterian</button>
-            <button>Vegan</button>
-            <button>Gluten-free</button>
-            <button>Halal</button>
+            <button>Picked for you</button>
+            <button>Most Popular</button>
+            <button>Rating</button>
+            <button>Delivery Time</button>
             <button>Allergy Friendly</button>
           </Accordion.Body>
         </Accordion.Item>
